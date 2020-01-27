@@ -1,0 +1,11 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Login", "Login\Login.shproj", "{A0D6475D-1DC3-49DD-895A-2F98439BA979}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+	EndGlobalSection
+EndGlobal
