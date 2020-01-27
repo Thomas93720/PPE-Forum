@@ -1,0 +1,113 @@
+body
+{
+	margin:0px;
+	background-color: darkgrey;
+}
+.entete
+{
+	text-align: center;
+}
+.barreDeNavigation
+{
+	background-color: black;
+	display: flex;
+	justify-content: space-between;
+}
+.barreDeNavigation a
+{
+	padding: 14px;
+	border-right: white 2px;
+	color: white;
+	text-decoration: none;
+	align-self: center;
+}
+.barreDeNavigation a:hover
+{
+	color:black;
+	background-color: white;
+}
+.connexion
+{
+	display: inline-block;
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+}
+.connexion-content
+{
+	display: none;
+	background-color: black;
+ 	min-width: 160px;
+ 	z-index: 1;
+}
+.connexion:hover .connexion-content 
+{
+  display: inline-block;
+}
+.logonav
+{
+	width: 30px;
+	height: 30px;
+	padding: 0px;
+	margin:0px;
+}
+.page
+{
+	display: flex;
+	text-align: center;
+
+}
+.Partiegauche
+{
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	border-right: 3px solid white;
+}
+.filDeDiscussion
+{
+	width: 90%;
+	height: 100px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid black;
+	align-self: center;
+	background-color: white;
+}
+.Partiedroite
+{
+	width:25%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+.infoFilDeDiscussion
+{
+	width: 90%;
+	height: 100px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid black;
+	align-self: center;
+	background-color: white;
+}
+.bas
+{
+	padding: 10px;
+	background-color: black;
+	display: flex;
+	justify-content: center;
+}
+.bas a 
+{
+	color: white;
+	margin-right: 5px;
+	text-decoration: none;
+	padding: 10px;
+}
+.bas a:hover
+{
+	background-color: white;
+	color: black;
+}
