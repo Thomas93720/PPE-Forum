@@ -1,6 +1,6 @@
-#CREATE DATABASE PPE
-#CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-#USE PPE;
+CREATE DATABASE PPE
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE PPE;
 CREATE TABLE Utilisateur
 (
 idUtilisateur INT(11),
@@ -26,6 +26,7 @@ idFilDeDiscussion INT(11),
 idFilDeDiscussionClos INT(11),
 titreFilDeDiscussion VARCHAR(64),
 idUtilisateurNonConnecte INT(11),
+dateOuverture DATE,
 PRIMARY KEY(idFilDeDiscussion)
 );
 CREATE TABLE Message
