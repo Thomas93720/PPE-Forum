@@ -1,35 +1,53 @@
 <?php
 	include("header.php");
+	include("Checkconnexion.php");
 ?>
 <div class="entete">
  	<h1>Forum</h1>
 	<p>Bienvenue sur le Forum</p>
 </div>
-<div class="barreDeNavigation">
- 	<a href="" >menu</a>
-	<a href="">information</a>
-	<li class="connexion">
-    	<a href="" class="loginbouton"><img class ="logonav"src="image/login.png"</a>
-    	<div class="connexion-content">
-      		<a href="#">S'inscrire</a>
-      		<a href="#">Se connecter</a>
-    	</div>
- 	</li>
-</div>
+<?php
+if ($etatConnexion == true) 
+{
+	include("BarreDeNavNonCo.php");
+}
+else
+{
+
+}
+?>
 <div class="page">
-	<div class="filDeDiscussion">
+	<div class="partgauche">
 	</div>
-	<div class="filDeDiscussion">
+	<div class="milieu">
+		<table>
+			<tbody>
+				<tr>
+					<th>date</th>
+					<th>Theme<th>
+					<th>Titre</th>
+				</th>
+					<?php
+						$state = $conn->prepare('SELECT * FROM FilDeDiscussion');
+						$state->execute();
+						$resultats = $state->fetchAll();
+						foreach ($resultats as $lineResultat) 
+						{
+							$title = $lineResultat["idFilDeDiscussion"];
+							echo '<tr class="titreForum">';
+							echo '<td>'.$lineResultat["dateOuverture"].'</a></td>';
+							echo '<td>'.$lineResultat["Theme"].'</td>';
+							echo '<td><a class="lientitreFilDeDiscussion" href="FilDeDiscussion.php?titre='.$title.'">'.$lineResultat["titreFilDeDiscussion"].'</a></td>';
+							echo '</tr>';
+						}
+					?>
+			</tbody>
+		</table>
 	</div>
-	<div class="filDeDiscussion">
-	</div>
-	<div class="filDeDiscussion">
-	</div>
-	<div class="filDeDiscussion">
-	</div>
-	<div class="filDeDiscussion">
+	<div class="partdroite">
 	</div>
 </div>
+
 <div class="bas">
 	<?php  
 	$nbpages =10;
