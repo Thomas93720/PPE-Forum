@@ -10,7 +10,7 @@ PRIMARY KEY (idUtilisateur)
 CREATE TABLE Compte
 (
 idCompte INT(11),
-idCompteBanni INT(11),
+isCompteBanni TINYINT,
 dateDebutBan DATE,
 dateFinBan DATE,
 motDePasse VARCHAR(64),
@@ -25,6 +25,7 @@ CREATE TABLE FilDeDiscussion
 idFilDeDiscussion INT(11) NOT NULL AUTO_INCREMENT,
 FilDeDiscussionClos TINYINT,
 titreFilDeDiscussion VARCHAR(64),
+idAuteur INT(11),
 idUtilisateurNonConnecte INT(11),
 dateOuverture DATE,
 Theme VARCHAR(64),
@@ -64,6 +65,10 @@ ALTER TABLE FilDeDiscussion
 ADD CONSTRAINT FilDeDiscussion_idUtilisateurNonConnecte
 FOREIGN KEY(idUtilisateurNonConnecte)
 REFERENCES UtilisateurNonConnecte(idUtilisateurNonConnecte);
+ALTER TABLE FilDeDiscussion
+ADD CONSTRAINT FilDeDiscussion_idAuteur
+FOREIGN KEY(idAuteur)
+REFERENCES Compte(idCompte);
 
 INSERT INTO FilDeDiscussion(dateOuverture,Theme,titreFilDeDiscussion,FilDeDiscussionClos) VALUES
 ("2019-11-12","Theme","titre1",false),
@@ -78,3 +83,14 @@ INSERT INTO FilDeDiscussion(dateOuverture,Theme,titreFilDeDiscussion,FilDeDiscus
 ("2019-08-19","Jeux","CSGO > R6",false),
 ("2019-08-19","Jeux","CSGO > R6",false),
 ("2019-08-19","Jeux","CSGO > R6",false);
+
+INSERT INTO Compte(idCompte,dateCreation,nomCompte,login,motDePasse) VALUES
+(1,"2001-09-11","N3oxG4m1ng","MathisRaptor","RaptorGAming"),
+(2,"2001-10-01","PaworSheq","power","test"),
+(3,"2001-10-02","KonekoHime","Rania","Rock");
+(4,"2001-10-25","AfidDeStationDellile","Kebab","Master")
+(5,"2001-10-25","DarUltraPSP","XXdArkXX","PSP")
+(6,"2001-11-15","Zakaclate","zac","password")
+(7,"2001-11-22","Yoann63Swag","baton","mordhau")
+(8,"2001-11-23","diablo63800","diablo","leDarkPGM")
+(9,"2001-11-25","PGM04","zac","late");
