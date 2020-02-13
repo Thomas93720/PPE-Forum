@@ -50,29 +50,29 @@ REFERENCES Message(idMessage);
 
 
 INSERT INTO Compte(idCompte,dateCreation,nomCompte,login,motDePasse) VALUES
-(1,"2001-09-11","N3oxG4m1ng","MathisRaptor","RaptorGAming"),
-(2,"2001-10-01","PaworSheq","power","test"),
+(1,"2001-09-11","Neox","Mathis","Raptor"),
+(2,"2001-10-01","PowerShaq","power","test"),
 (3,"2001-10-02","KonekoHime","Rania","Rock"),
 (4,"2001-10-25","AfidDeStationDellile","Kebab","Master"),
-(5,"2001-10-25","DarUltraPSP","XXdArkXX","PSP"),
+(5,"2001-10-25","DarkUltraPSP","XXdArkXX","PSP"),
 (6,"2001-11-15","Zakaclate","zac","password"),
 (7,"2001-11-22","Yoann63Swag","baton","mordhau"),
 (8,"2001-11-23","diablo63800","diablo","leDarkPGM"),
 (9,"2001-11-25","PGM04","zac","late");
 
 INSERT INTO FilDeDiscussion(idFilDeDiscussion,dateOuverture,Theme,titreFilDeDiscussion,isFilDeDiscussionClos,idCreateur) VALUES
-(1,"2019-11-12","Apple","titre1",false,1),
-(2,"2019-10-07","Jeux","titre2",false,2),
-(3,"2019-09-17","Audio-Video","titre3",false,4),
-(4,"2019-09-15","Apple","Apple < ALL",false,3),
-(5,"2019-09-07","Astronomie","titre5",false,7),
-(6,"2019-08-30","Overclocking","titre6",false,6),
-(7,"2019-08-25","Discussions","Pourquoi try hard sur les jeux",true,1),
-(8,"2019-08-21","Film","Retour vers le futur meilleure trilogie",false,2),
-(9,"2019-08-20","Film","interstellar surcoté",false,5),
-(10,"2019-08-19","Jeux","CSGO > R6",false,9),
-(11,"2019-08-19","Jeux","CSGO > R6",false,8),
-(12,"2019-08-19","Jeux","CSGO > R6",false,6);
+(1,"2019-11-12","Hardware","Ryzen vs Intel",false,1),
+(2,"2019-10-07","Jeux","R6 vs CS:GO",false,2),
+(3,"2019-09-17","Audio-Video","Quel ampli pour ma basse?",false,4),
+(4,"2019-09-15","Hardware","Apple > ALL",false,3),
+(5,"2019-09-07","Astronomie","La Nasa a découvert une nouvelle planète",false,7),
+(6,"2019-08-30","Software","Comment utiliser JavaFX",false,6),
+(7,"2019-08-25","Discussions","Tryhard sur LoL = Pôle Emploi? ",true,1),
+(8,"2019-08-21","Film","Interstellar chef d'oeuvre?",false,2),
+(9,"2019-08-20","Film","interstellar surcoté?",false,5),
+(10,"2019-08-19","Jeux","AWP > AutoNoob",false,9),
+(11,"2019-08-19","Jeux","Ma mère est accro à Candy Crush les kheys",false,8),
+(12,"2019-08-19","Discussions","Je galère en PHP",false,6);
 
 INSERT INTO Message(idMessage,libelle,dateEnvoi,titreMessage,idFilDeDiscussion,idAuteur) VALUES
 (1,"libelle","2001-09-11","titreMessage",1,2);

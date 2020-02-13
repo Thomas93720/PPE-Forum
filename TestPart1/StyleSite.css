@@ -35,6 +35,7 @@ body
 {
 	color:black;
 	background: linear-gradient(to right, #FF4B2B, #FF416C);
+
 }
 button
 {
@@ -176,3 +177,4 @@ a
   {
   	align-self: center;
   }
+}
