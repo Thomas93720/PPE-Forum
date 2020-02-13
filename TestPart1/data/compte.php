@@ -91,7 +91,6 @@
         function setConnexion($connexion) {
             $this->connexion = $connexion;
         }
-<<<<<<< HEAD
         public function initCompte($idCompte)
         {
             $bdd=DatabaseLinker::getConnexion();
@@ -160,8 +159,4 @@
     
     
     
-=======
-        
-    }      
->>>>>>> 80c49585b3ecc3fa73cb927e7d80ca45b9f301f2
 ?>
