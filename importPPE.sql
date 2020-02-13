@@ -5,7 +5,7 @@ USE PPE;
 
 CREATE TABLE Compte
 (
-idCompte INT(11),
+idCompte INT(11) NOT NULL AUTO_INCREMENT,
 isCompteBanni TINYINT,
 dateDebutBan DATE,
 dateFinBan DATE,
@@ -64,7 +64,7 @@ INSERT INTO FilDeDiscussion(idFilDeDiscussion,dateOuverture,Theme,titreFilDeDisc
 (1,"2019-11-12","Apple","titre1",false,1),
 (2,"2019-10-07","Jeux","titre2",false,2),
 (3,"2019-09-17","Audio-Video","titre3",false,4),
-(4,"2019-09-15","Apple","Apple < ALl",false,3),
+(4,"2019-09-15","Apple","Apple < ALL",false,3),
 (5,"2019-09-07","Astronomie","titre5",false,7),
 (6,"2019-08-30","Overclocking","titre6",false,6),
 (7,"2019-08-25","Discussions","Pourquoi try hard sur les jeux",true,1),
