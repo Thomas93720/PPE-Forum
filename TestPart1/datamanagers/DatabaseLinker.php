@@ -1,7 +1,7 @@
 <?php
 	class DatabaseLinker
 	{
-		private static $URL = 'mysql:host=localhost;dbname=ppe;charset=utf8';
+		private static $URL = 'mysql:host=localhost;dbname=PPE;charset=utf8';
 		private static $id = 'root';
 		private static $mdp = 'root';
 		private static $PDO;

@@ -11,93 +11,96 @@
         private $nomCompte;
         private $idMessage;
         private $connexion;
-        
-        public function getIdCompte() {
+
+        function getIdCompte() {
             return $this->idCompte;
         }
 
-        public function getIsCompteBanni() {
-            return $this->isCompteBanni;
+        function getIdCompteBanni() {
+            return $this->idCompteBanni;
         }
 
-        public function getDateDebutBan() {
+        function getDateDebutBan() {
             return $this->dateDebutBan;
         }
 
-        public function getDateFinBan() {
+        function getDateFinBan() {
             return $this->dateFinBan;
         }
 
-        public function getMotDePasse() {
+        function getMotDePasse() {
             return $this->motDePasse;
         }
 
-        public function getLogin() {
+        function getLogin() {
             return $this->login;
         }
 
-        public function getDateCreation() {
+        function getDateCreation() {
             return $this->dateCreation;
         }
 
-        public function getNomCompte() {
+        function getNomCompte() {
             return $this->nomCompte;
         }
 
-        public function getIdMessage() {
+        function getIdMessage() {
             return $this->idMessage;
         }
 
-        public function getConnexion() {
+        function getConnexion() {
             return $this->connexion;
         }
 
-        public function setIdCompte($idCompte) {
+        function setIdCompte($idCompte) {
             $this->idCompte = $idCompte;
         }
 
-        public function setIsCompteBanni($isCompteBanni) {
-            $this->isCompteBanni = $isCompteBanni;
+        function setIdCompteBanni($idCompteBanni) {
+            $this->idCompteBanni = $idCompteBanni;
         }
 
-        public function setDateDebutBan($dateDebutBan) {
+        function setDateDebutBan($dateDebutBan) {
             $this->dateDebutBan = $dateDebutBan;
         }
 
-        public function setDateFinBan($dateFinBan) {
+        function setDateFinBan($dateFinBan) {
             $this->dateFinBan = $dateFinBan;
         }
 
-        public function setMotDePasse($motDePasse) {
+        function setMotDePasse($motDePasse) {
             $this->motDePasse = $motDePasse;
         }
 
-        public function setLogin($login) {
+        function setLogin($login) {
             $this->login = $login;
         }
 
-        public function setDateCreation($dateCreation) {
+        function setDateCreation($dateCreation) {
             $this->dateCreation = $dateCreation;
         }
 
-        public function setNomCompte($nomCompte) {
+        function setNomCompte($nomCompte) {
             $this->nomCompte = $nomCompte;
         }
 
-        public function setIdMessage($idMessage) {
+        function setIdMessage($idMessage) {
             $this->idMessage = $idMessage;
         }
 
-        public function setConnexion($connexion) {
+        function setConnexion($connexion) {
             $this->connexion = $connexion;
         }
-        public function getCompteWithId($idCompte)
+        public function initCompte($idCompte)
         {
             $bdd=DatabaseLinker::getConnexion();
             $state = $bdd->prepare("SELECT * FROM Compte WHERE idCompte=?");
             $state->bindParam(1,$idCompte);
+
             $state->execute();
+
             $resultat = $state->fetchAll();
+
             foreach ($resultat as $ligneResultat) 
             {
                 $this->idCompte = $ligneResultat["idCompte"];
@@ -105,13 +108,33 @@
                 $this->idMessage= $ligneResultat["idMessage"];
                 $this->dateCreation = $ligneResultat["dateCreation"];
                 $this->login = $ligneResultat["login"];
-                $this->isCompteBanni = $ligneResultat["isCompteBanni"];
                 $this->dateDebutBan = $ligneResultat["dateDebutBan"];
                 $this->dateFinBan = $ligneResultat["dateFinBan"];
                 $this->motDePasse = $ligneResultat["motDePasse"];
             }
         }
-        public static function getAllCompte($typeTri)
+        public static function identification($mdp,$login)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("SELECT * FROM Compte WHERE motDePasse = ? AND login = ?");
+            $state->bindParam(1,$mdp);
+            $state->bindParam(2,$login);
+            $state->execute();
+            $resultat = $state->fetchAll();
+            foreach ($resultat as $ligneResultat) 
+            {
+                $user = new Compte();
+                $user->setIdCompte($ligneResultat["idCompte"]);
+                $user->setNomCompte($ligneResultat["nomCompte"]);
+                $user->setIdMessage($ligneResultat["idMessage"]);
+                $user->setDateCreation($ligneResultat["dateCreation"]);
+                $user->setLogin($ligneResultat["login"]);
+                $user->setMotDePasse($ligneResultat["motDePasse"]);
+                return $user;
+            }
+            return null;
+        }
+        public static function findFilDeDiscussion($typeTri)
         {
             $tab= array();
             $connex=DatabaseLinker::getConnexion();
@@ -120,19 +143,20 @@
             $result = $state->fetchALL();
             foreach ($result as $ligneResult) 
             {
-                $user = new Compte();
-                $user->setIdCompte($ligneResult["idCompte"]);
-                $user->setNomCompte($ligneResult["nomCompte"]);
-                $user->setDateCreation($ligneResult["dateCreation"]);
-                $user->setIdMessage($ligneResult["idMessage"]);
-                $user->setMotDePasse($ligneResult["motDePasse"]);
-                $user->setLogin($ligneResult["login"]);
-                $user->setIsCompteBanni($ligneResult["isCompteBanni"]);
-                $user->setDateDebutBan($ligneResult["dateDebutBan"]);
-                $user->setDateFinBan($ligneResult["dateFinBan"]);
-                $tab[] = $user;
+                $findFilDeDiscussion = new Timbre();
+                $findFilDeDiscussion->setIdCompte($ligneResult["idCompte"]);
+                $findFilDeDiscussion->setNomCompte($ligneResult["titre"]);
+                $findFilDeDiscussion->setMotDePasse($ligneResult["motDePasse"]);
+                $findFilDeDiscussion->setDateCreation($ligneResult["dateCreation"]);
+                $findFilDeDiscussion->setIdMessage($ligneResult["idMessage"]);
+                $findFilDeDiscussion->setDateDebutBan($ligneResult["dateDebutBan"]);
+                $findFilDeDiscussion->setDateFinBan($ligneResult["dateFinBan"]);
+                $tab[] = $findFilDeDiscussion;
             }
             return $tab;
         }
-    }      
+    }
+    
+    
+    
 ?>

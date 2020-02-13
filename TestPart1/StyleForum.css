@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800%27');
+body
+{
+	margin:0px;
+	text-align: center;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	color:white;
+	font-family: 'Montserrat', sans-serif;
+}
+.barreDeNavigation
+{
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.barreDeNavigation a
+{
+	padding: 14px;
+	border-right: white 2px;
+	color: black;
+	text-decoration: none;
+	align-self: center;
+}
+.barreDeNavigation a:hover
+{
+	color:black;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+button
+{
+	background: black;
+	color: white;
+	cursor: pointer;
+	padding: 6px;
+	border:none;
+	font-size:16px;
+	margin-top: 6px;
+}
+input
+{
+	padding: 10px;
+	border:none;
+}
+div.polaroid {
+  width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+}
+
+div.container {
+  padding: 10px;
+}
