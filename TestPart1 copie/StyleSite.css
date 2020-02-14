@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800%27');
+
+body
+{
+	margin:0px;
+	background-size: contain;
+	font-family: 'Montserrat', sans-serif;
+	color:white;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	display: flex;
+	flex-direction: column;
+}
+.index
+{
+	width: 100%;
+}
+.entete
+{
+	text-align: center;
+}
+.barreDeNavigation
+{
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.barreDeNavigation a
+{
+	padding: 14px;
+	border-right: white 2px;
+	color: black;
+	text-decoration: none;
+	align-self: center;
+}
+.barreDeNavigation a:hover
+{
+	color:black;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+button
+{
+	background: black;
+	color: white;
+	cursor: pointer;
+	padding: 6px;
+	border:none;
+	font-size:16px;
+	margin-top: 6px;
+}
+input
+{
+	padding: 10px;
+	border:none;
+}
+.modesombre
+{
+	width: 22px;
+	height: 15px;
+	align-self: center;
+	justify-content: flex-end;
+}
+.partgauche
+{
+	width: 25%;
+}
+.milieu
+{
+	width: 50%;
+	color:black;
+	background-color: white;
+	border-top:solid 1px black;
+}
+.box
+{
+	background-color: white;
+	border-bottom: solid 1px black;
+	display: flex;
+}
+.box:hover
+{
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+.Content
+{
+	width: 100%;
+	display: flex;
+}
+.grand
+{
+	text-decoration: none;
+	font-size: 30px;
+}
+.petit
+{
+	color: grey;
+}
+.imageTheme
+{
+	width: 100px;
+	height: 100%;
+	margin-right: 20px;
+}
+.partdroite
+{
+	width: 25%;
+}
+.page
+{
+	display: flex;
+	text-align: center;
+	flex-direction: row;
+	width: 100%;
+}
+.filDeDiscussion
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border: 1px solid black;
+	align-self: center;
+	background-color: tan;
+}
+a
+{
+	text-decoration:none;
+	color: black;
+}
+.pub
+{
+	width: 75%;
+	height: 290px;
+	margin-top: 10px;
+}
+.bas
+{
+	padding: 10px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.bas a 
+{
+	color: black;
+	margin-right: 5px;
+	text-decoration: none;
+	padding: 10px;
+}
+.bas a:hover
+{
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	color: black;
+}
+
+@media screen and (max-width: 800px) {
+  div.page
+  {
+  	flex-direction: column;
+  }
+  div.milieu
+  {
+  	width: 100%;
+  }
+  div.barreDeNavigation
+  {
+  	flex-direction: column;
+  }
+  form
+  {
+  	align-self: center;
+  }
+  div.partgauche
+  {
+  	align-self: center;
+  }
+  div.partdroite
+  {
+  	align-self: center;
+  }
+}
