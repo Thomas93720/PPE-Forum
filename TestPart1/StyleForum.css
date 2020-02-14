@@ -26,6 +26,17 @@ body
 	color:black;
 	background: linear-gradient(to right, #FF4B2B, #FF416C);
 }
+.imageCercle
+{
+	height:106px;
+	width:106px;
+}
+.page
+{
+	display: flex;
+	background-color: green;
+	flex-direction: flex-start;
+}
 button
 {
 	background: black;
@@ -41,12 +52,36 @@ input
 	padding: 10px;
 	border:none;
 }
-div.polaroid {
-  width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  text-align: center;
+hr
+{
+	margin-right: 20px;
+	margin-left: 20px;
 }
-
-div.container {
-  padding: 10px;
+.profilCard
+{
+	display: flex;
+	flex-direction: column;
+	margin-right: 10px;
+	margin-left: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: white;
+	color:black;
+	border-radius: 5px;
+}
+.column
+{
+	display: flex;
+	flex-direction: flex-start;
+}
+.gauche
+{
+	width:25%;
+}
+.milieu
+{
+	width: 50%;
+	background-color: white;
+	color: black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 5px;
 }

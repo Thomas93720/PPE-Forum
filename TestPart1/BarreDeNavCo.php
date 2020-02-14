@@ -5,8 +5,8 @@
 <div class="barreDeNavigation">
  	<a href="connecte.php" ><i class="fas fa-align-justify"></i> Menu</a>
 	<a href=""><i class="fas fa-info"></i> Information</a>
-	<form class="search">
-		<input type="search" placeholder="Rechercher un topic..." >
+	<form method = "GET" class="search">
+		<input type="search" placeholder="Rechercher un topic..." name="q">
 		<button>
 			Rechercher
 		</button>

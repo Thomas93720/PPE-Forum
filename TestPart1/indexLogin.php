@@ -26,12 +26,15 @@
           $isUserCo = Compte::identification($_POST["motdepasse"],$_POST["identifiant"]);
           if ($isUserCo==NULL) 
           {
-            echo 'mauvais identifiants';
+            echo 'Mauvais identifiants';
           }
           else
           {
             session_start();
             $_SESSION["idUser"] = $isUserCo->getIdCompte();
+            include("header.php");
+            ?>
+    <?php
             header('Location: connecte.php');
             exit();
           }

@@ -21,6 +21,8 @@
         <?php
         	$typeTriFilDeDiscussion = "dateOuverture ASC";
 			$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
+			$taille = sizeof($tabFilDeDiscussion)/6;
+			$reste = fmod(sizeof($tabFilDeDiscussion),6);
 			if (empty($_GET["pages"])|| $_GET["pages"]=="1")
 			{
 				for ($i=1; $i < 7; $i++) 
@@ -41,55 +43,43 @@
 					</a>';
 				}
 			}
-            
-			$taille = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"));
-			$taille -= 6;
 			$cpt=7;
-			$nbpages = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))/6;
 			if (!empty($_GET["pages"])) 
 			{
-				if ($_GET["pages"]=="2") 
+				if ($reste>0) 
 				{
-					for ($i=$cpt; $i < $cpt+6; $i++) 
-		            { 
-						$fildediscussion = new FilDeDiscussion();
-						$fildediscussion->getIdFilDeDiscussionWithId($i);
-						$createur = FilDeDiscussion::getCreateurWithId($i);
-				        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
-							echo '<div class="box">';
-								echo '<div class="Content">';
-									echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
-									echo '<div>';
-										echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-										echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
-									echo '</div>
-								</div>
-							</div>
-						</a>';
-					}
+					$taille = $taille+1;
 				}
-				if ($_GET["pages"]=="3") 
-				{
-					for ($i=11; $i < sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))+1; $i++) 
-		            { 
-						$fildediscussion = new FilDeDiscussion();
-						$fildediscussion->getIdFilDeDiscussionWithId($i);
-						$createur = FilDeDiscussion::getCreateurWithId($i);
-				        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
-							echo '<div class="box">';
-								echo '<div class="Content">';
-									echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
-									echo '<div>';
-										echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-										echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
-									echo '</div>
+				for ($i=2; $i < $taille+1; $i++) 
+				{ 
+					if ($_GET["pages"]==$i) 
+					{
+						for ($i=$cpt; $i < $cpt+6; $i++) 
+			            { 
+							$fildediscussion = new FilDeDiscussion();
+							$fildediscussion->getIdFilDeDiscussionWithId($i);
+							$createur = FilDeDiscussion::getCreateurWithId($i);
+					        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
+								echo '<div class="box">';
+									echo '<div class="Content">';
+										echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
+										echo '<div>';
+											echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
+											echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+										echo '</div>
+									</div>
 								</div>
-							</div>
-						</a>';
+							</a>';
+						}
+						$cpt=$cpt+7;
 					}
 				}
 			}
+            
+			$nbpages = $taille;
+				
 			?>
+		
 	</div>
 	<div class="partdroite">
 		<img class="pub" src="https://media.discordapp.net/attachments/535910358078980172/676726300110618645/DS8NwTEX0AAs8Kl.jpg?width=674&height=943">
