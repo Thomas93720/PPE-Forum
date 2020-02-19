@@ -22,7 +22,7 @@
 			$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
 			if (empty($_GET["pages"])|| $_GET["pages"]=="1")
 			{
-				for ($i=1; $i < 7; $i++) 
+				for ($i=1; $i < 12; $i++) 
 	            { 
 					$fildediscussion = new FilDeDiscussion();
 					$fildediscussion->getIdFilDeDiscussionWithId($i);
@@ -32,8 +32,8 @@
 							echo '<div class="Content">';
 								echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 								echo '<div>';
-									echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-									echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+									echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
+									echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 								echo '</div>
 							</div>
 						</div>
@@ -42,49 +42,33 @@
 			}
             
 			$taille = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"));
-			$taille -= 6;
-			$cpt=7;
+			$taille -= 12;
+			$cpt=12;
 			$nbpages = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))/6;
 			if (!empty($_GET["pages"])) 
 			{
 				if ($_GET["pages"]=="2") 
 				{
-					for ($i=$cpt; $i < $cpt+6; $i++) 
+					for ($i=$cpt; $i < $cpt+12; $i++) 
 		            { 
 						$fildediscussion = new FilDeDiscussion();
 						$fildediscussion->getIdFilDeDiscussionWithId($i);
 						$createur = FilDeDiscussion::getCreateurWithId($i);
-				        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
-							echo '<div class="box">';
-								echo '<div class="Content">';
-									echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
-									echo '<div>';
-										echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-										echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
-									echo '</div>
+						if (!empty($fildediscussion->getIdFilDeDiscussion())) 
+						{
+							echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
+								echo '<div class="box">';
+									echo '<div class="Content">';
+										echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
+										echo '<div>';
+											echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
+											echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+										echo '</div>
+									</div>
 								</div>
-							</div>
-						</a>';
-					}
-				}
-				if ($_GET["pages"]=="3") 
-				{
-					for ($i=11; $i < sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))+1; $i++) 
-		            { 
-						$fildediscussion = new FilDeDiscussion();
-						$fildediscussion->getIdFilDeDiscussionWithId($i);
-						$createur = FilDeDiscussion::getCreateurWithId($i);
-				        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
-							echo '<div class="box">';
-								echo '<div class="Content">';
-									echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
-									echo '<div>';
-										echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-										echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
-									echo '</div>
-								</div>
-							</div>
-						</a>';
+							</a>';
+						}
+				        
 					}
 				}
 			}

@@ -1,16 +1,19 @@
 <?php
 	include("header.php");
-	include_once("datamanagers/DatabaseLinker.php");
-	include("datamanagers/fildediscussionManager.php");
-	include("datamanagers/compteManager.php");
-	include("datamanagers/messageManager.php");
-	if(isset($_SESSION["idUser"]))  
-	{
-		session_destroy();
-	}
+	include("datamanagers/DatabaseLinker.php");
+	include("data/fildediscussion.php");
+	include("data/compte.php");
+	include("data/message.php");
 ?>
 <?php
-	include("BarreDeNavNonCo.php");
+	if (isset($_SESSION["idUser"])) 
+	{
+		include("BarreDeNavCo.php");
+	}
+	else
+	{
+		include("BarreDeNavNonCo.php");
+	}
 ?>
 <div class="page">
 	<div class="partgauche">
@@ -20,58 +23,54 @@
 	<div class="milieu">
         <?php
         	$typeTriFilDeDiscussion = "dateOuverture ASC";
-			$tabFilDeDiscussion = fildediscussionManager::getAllFilDeDiscussion($typeTriFilDeDiscussion);
+			$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
 			$taille = sizeof($tabFilDeDiscussion)/6;
 			$reste = fmod(sizeof($tabFilDeDiscussion),6);
 			if (empty($_GET["pages"])|| $_GET["pages"]=="1")
 			{
-				for ($i=1; $i < 7; $i++) 
+				for ($i=1; $i < 12; $i++) 
 	            { 
 					$fildediscussion = new FilDeDiscussion();
-					$fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($i);
-					$createur = fildediscussionManager::getCreateurWithId($i);
+					$fildediscussion->getIdFilDeDiscussionWithId($i);
+					$createur = FilDeDiscussion::getCreateurWithId($i);
 			        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 						echo '<div class="box">';
 							echo '<div class="Content">';
 								echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 								echo '<div>';
-									echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-									echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+									echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
+									echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 								echo '</div>
 							</div>
 						</div>
 					</a>';
 				}
 			}
-			$cpt=7;
+			$cpt=12;
 			if (!empty($_GET["pages"])) 
 			{
-				if ($reste>0) 
+				if ($_GET["pages"]=="2") 
 				{
-					$taille = $taille+1;
-				}
-				for ($i=2; $i < $taille+1; $i++) 
-				{ 
-					if ($_GET["pages"]==$i) 
-					{
-						for ($i=$cpt; $i < $cpt+6; $i++) 
-			            { 
-							$fildediscussion = new FilDeDiscussion();
-							$fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($i);
-							$createur = fildediscussionManager::getCreateurWithId($i);
-					        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
+					for ($i=$cpt; $i < $cpt+12; $i++) 
+		            { 
+						$fildediscussion = new FilDeDiscussion();
+						$fildediscussion->getIdFilDeDiscussionWithId($i);
+						$createur = FilDeDiscussion::getCreateurWithId($i);
+						if (!empty($fildediscussion->getIdFilDeDiscussion())) 
+						{
+							echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 								echo '<div class="box">';
 									echo '<div class="Content">';
 										echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 										echo '<div>';
-											echo'<div class="grand">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="petit">'.'Createur : '.$createur->getNomCompte().'<br>Theme : '.$fildediscussion->getThemeFilDeDiscussion().'<br>date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
+											echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
 							</a>';
 						}
-						$cpt=$cpt+7;
+				        
 					}
 				}
 			}

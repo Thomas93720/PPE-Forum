@@ -11,7 +11,8 @@
 </head>
 <body>
   <?php
-    include("datamanagers/compteManager.php");
+  /*sha1()*/
+    include("data/compte.php");
     include("datamanagers/DatabaseLinker.php");
 
     $connexion = DatabaseLinker::getConnexion();
@@ -19,54 +20,22 @@
     {
       if(empty($_POST["motdepasse"]) || empty($_POST["identifiant"]))  
        {  
-          echo '<label>Veuillez remplir tous les champs</label>';  
+          $erreur = '<br><div class="erreur">Veuillez remplir tous les champs</div>';  
        }
        else
        {
-          $isUserCo = CompteManager::identification($_POST["motdepasse"],$_POST["identifiant"]);
+          $isUserCo = Compte::identification($_POST["motdepasse"],$_POST["identifiant"]);
           if ($isUserCo==NULL) 
           {
-            echo 'Mauvais identifiants';
+            $erreur = '<br><label class="erreur">Mauvais identifiants</label>';
           }
           else
           {
             session_start();
             $_SESSION["idUser"] = $isUserCo->getIdCompte();
             include("header.php");
-
-            header('Location: connecte.php');
-            exit();
-          }
-      }  
-    }
-  ?>
-    
-    
-   <?php
-    $connexion = DatabaseLinker::getConnexion();
-    if (isset($_POST["registerSubmit"])) 
-    {
-      if(empty($_POST["motdepasse"]) || empty($_POST["identifiant"]))  
-       {  
-          echo '<label>Veuillez remplir tous les champs</label>';  
-       }
-       else
-       {
-          $isUserCo = CompteManager::VerifNewId($_POST["identifiant"]);
-          if ($isUserCo==NULL) 
-          {
-            echo 'Mauvais identifiants';
-          }
-          else
-          {
-            $comte = new compte();
-            $comte->setLogin($_POST["identifiant"]);
-            $comte->setMotDePasse($_POST["motdepasse"]);
-            compteManager::CreateNewCompte($comte);
-            session_start();
-            $_SESSION["idUser"] = $isUserCo->getIdCompte();
-            include("header.php");
-
+            ?>
+    <?php
             header('Location: connecte.php');
             exit();
           }
@@ -79,10 +48,11 @@
    <h1>Créer votre compte</h1>
    <div class="social-container">
     <a href="http://sio.jbdelasalle.com/" class="social"><i class="fas fa-school"></i></a>
-    <a href="#" class="social"><i class="fas fa-scroll"></i></a>
+    <a href="indexRulePage.php" class="social"><i class="fas fa-scroll"></i></a>
    </div>
    <span>Rejoignez nous maintenant!</span>
    <input type="text" name="nameReg" placeholder="Pseudo" />
+   <input type="text" name="login" placeholder="Login" />
    <input type="email" name="emailReg" placeholder="Email" />
    <input type="password" name="passwordReg" placeholder="Mot de passe" />
    <button name="registerSubmit">Nous Rejoindre</button>
@@ -93,13 +63,19 @@
    <h1>Se Connecter</h1>
    <div class="social-container">
     <a href="http://sio.jbdelasalle.com/" class="social"><i class="fas fa-school"></i></a>
-    <a href="#" class="social"><i class="fas fa-scroll"></i></a>
+    <a href="indexRulePage.php" class="social"><i class="fas fa-scroll"></i></a>
    </div>
    <span>Utilisez votre compte pour vous connecter</span>
-   <input type="text" name = "identifiant" placeholder="Pseudo" />
-   <input type="password" name = "motdepasse" placeholder="Mot de passe" />
+   <input type="text" maxlength="30" name = "identifiant" placeholder="Pseudo" />
+   <input type="password" maxlength="30" name = "motdepasse" placeholder="Mot de passe" />
    <a href="#">Mot de passe oublié? (Ne marche pas lul)</a>
    <button name="loginSubmit">Se Connecter</button>
+   <?php
+    if(isset($erreur))
+    {
+      echo $erreur;
+    }
+  ?>
   </form>
  </div>
  <div class="overlay-container">
