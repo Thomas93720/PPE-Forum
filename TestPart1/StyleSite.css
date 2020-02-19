@@ -94,30 +94,35 @@ input
 {
 	color: grey;
 }
+.sousTitre
+{
+    color: grey;
+}
 .imageTheme
 {
-	width: 100px;
-	height: 100%;
-	margin-right: 20px;
+    width: 50px;
+    height: 100%;
+    margin-right: 20px;
+
 }
 .partdroite
 {
-	width: 25%;
+    width: 25%;
 }
 .page
 {
-	display: flex;
-	text-align: center;
-	flex-direction: row;
-	width: 100%;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    width: 100%;
 }
 .filDeDiscussion
 {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	border: 1px solid black;
-	align-self: center;
-	background-color: tan;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    align-self: center;
+    background-color: tan;
 }
 a
 {

@@ -15,6 +15,7 @@ dateCreation DATE,
 nomCompte VARCHAR(64),
 idMessage INT(11),
 connexion TINYINT,
+email VARCHAR(64),
 PRIMARY KEY(idCompte)
 );
 CREATE TABLE FilDeDiscussion

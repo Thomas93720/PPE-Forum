@@ -1,9 +1,9 @@
 <?php
 	include("header.php");
-	include("datamanagers/DatabaseLinker.php");
-	include("data/fildediscussion.php");
-	include("data/compte.php");
-	include("data/message.php");
+	include_once("datamanagers/DatabaseLinker.php");
+	include("datamanagers/fildediscussionManager.php");
+	include("datamanagers/compteManager.php");
+	include("datamanagers/messageManager.php");
 ?>
 <?php
 	session_start();  
@@ -19,14 +19,14 @@
 	<div class="milieu">
         <?php
         	$typeTriFilDeDiscussion = "dateOuverture ASC";
-			$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
+			$tabFilDeDiscussion = fildediscussionManager::getAllFilDeDiscussion($typeTriFilDeDiscussion);
 			if (empty($_GET["pages"])|| $_GET["pages"]=="1")
 			{
 				for ($i=1; $i < 7; $i++) 
 	            { 
 					$fildediscussion = new FilDeDiscussion();
-					$fildediscussion->getIdFilDeDiscussionWithId($i);
-					$createur = FilDeDiscussion::getCreateurWithId($i);
+					$fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($i);
+					$createur = fildediscussionManager::getCreateurWithId($i);
 			        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 						echo '<div class="box">';
 							echo '<div class="Content">';
@@ -41,10 +41,10 @@
 				}
 			}
             
-			$taille = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"));
+			$taille = sizeof(fildediscussionManager::getAllFilDeDiscussion(" idFilDeDiscussion ASC"));
 			$taille -= 6;
 			$cpt=7;
-			$nbpages = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))/6;
+			$nbpages = sizeof(fildediscussionManager::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))/6;
 			if (!empty($_GET["pages"])) 
 			{
 				if ($_GET["pages"]=="2") 
@@ -69,7 +69,7 @@
 				}
 				if ($_GET["pages"]=="3") 
 				{
-					for ($i=11; $i < sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))+1; $i++) 
+					for ($i=11; $i < sizeof(fildediscussionManager::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))+1; $i++) 
 		            { 
 						$fildediscussion = new FilDeDiscussion();
 						$fildediscussion->getIdFilDeDiscussionWithId($i);

@@ -11,8 +11,18 @@
         private $nomCompte;
         private $idMessage;
         private $connexion;
+        private $email;
+        
 
-        function getIdCompte() {
+        function getEmail() {
+            return $this->email;
+        }
+
+        function setEmail($email) {
+            $this->email = $email;
+        }
+
+                function getIdCompte() {
             return $this->idCompte;
         }
 

@@ -2,6 +2,26 @@
     include("data/compte.php");
     class compteManager
     {
+        
+        public static function getIdCompteRegister($compte)
+        {
+            $login = $compte->getLogin();
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("SELECT idCompte FROM Compte WHERE login LIKE ?");
+            $state->bindParam(1,$login);
+
+            $state->execute();
+
+            $resultat = $state->fetchAll();
+
+            foreach ($resultat as $ligneResultat) 
+            {
+                $compte->setIdCompte = $ligneResultat["idCompte"];
+                $id = $ligneResultat["idCompte"];
+            }
+            return $id;
+        }
+        
         public function initCompte($idCompte)
         {
             $bdd=DatabaseLinker::getConnexion();
@@ -70,29 +90,34 @@
         public static function VerifNewId($login)
         {
             $bdd=DatabaseLinker::getConnexion();
-            $state = $bdd->prepare("SELECT * FROM Compte WHERE  login = ?");
+            $state = $bdd->prepare("SELECT * FROM Compte WHERE  nomCompte LIKE ?");
             $state->bindParam(1,$login);
             $state->execute();
             $resultat = $state->fetchAll();
-            foreach ($resultat as $ligneResultat) 
+            if(empty($resultat))
             {
-                $user = new Compte();
-                $user->setIdCompte($ligneResultat["idCompte"]);
-                $user->setNomCompte($ligneResultat["nomCompte"]);
-                $user->setIdMessage($ligneResultat["idMessage"]);
-                $user->setDateCreation($ligneResultat["dateCreation"]);
-                $user->setLogin($ligneResultat["login"]);
-                $user->setMotDePasse($ligneResultat["motDePasse"]);
-                return $user;
+                $valide = true;
             }
-            return null;
+            else
+            {
+                $valide = false;
+            }
+            return $valide;
         }
         
         public static function CreateNewCompte($compte)
         {
             $bdd=DatabaseLinker::getConnexion();
-            $state = $bdd->prepare("INSERT INTO");
-            $state->bindParam(1,$login);
+            $nomCompte = $compte->getNomCompte();
+            $login = $compte->getLogin();
+            $email = $compte->getEmail();
+            $mdp = $compte->getMotDePasse();
+            $state = $bdd->prepare("INSERT INTO compte(nomCompte, email, motDePasse, dateCreation, login)VALUES (?,?,?, CURDATE(), ?)");
+            $state->bindParam(1, $nomCompte);
+            $state->bindParam(2, $email);
+            $state->bindParam(3, $mdp);
+            $state->bindParam(4, $login);
+            
             $state->execute();
         }
         

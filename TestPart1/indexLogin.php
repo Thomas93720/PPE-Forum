@@ -46,26 +46,27 @@
     $connexion = DatabaseLinker::getConnexion();
     if (isset($_POST["registerSubmit"])) 
     {
-      if(empty($_POST["motdepasse"]) || empty($_POST["identifiant"]))  
+      if(empty($_POST["passwordReg"]) || empty($_POST["emailReg"]) || empty($_POST["nameReg"]) || empty($_POST["login"]))  
        {  
           echo '<label>Veuillez remplir tous les champs</label>';  
        }
        else
        {
-          $isUserCo = CompteManager::VerifNewId($_POST["identifiant"]);
-          if ($isUserCo==NULL) 
+          $isvalide = CompteManager::VerifNewId($_POST["nameReg"]);
+          if ($isvalide==false) 
           {
-            echo 'Mauvais identifiants';
+            echo 'Identifiants invalide';
           }
           else
           {
-            $comte = new compte();
-            $comte->setLogin($_POST["identifiant"]);
-            $comte->setMotDePasse($_POST["motdepasse"]);
-            compteManager::CreateNewCompte($comte);
+            $compte = new compte();
+            $compte->setMotDePasse($_POST["passwordReg"]);
+            $compte->setEmail($_POST["emailReg"]);
+            $compte->setNomCompte($_POST["nameReg"]);
+            $compte->setLogin($_POST["login"]);
+            compteManager::CreateNewCompte($compte);
             session_start();
-            $_SESSION["idUser"] = $isUserCo->getIdCompte();
-            include("header.php");
+            $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
 
             header('Location: connecte.php');
             exit();
@@ -75,7 +76,7 @@
   ?>
 <div class="container" id="container">
  <div class="form-container sign-up-container">
-  <form action="login.php" method="post">
+  <form action="#" method="post">
    <h1>Créer votre compte</h1>
    <div class="social-container">
     <a href="http://sio.jbdelasalle.com/" class="social"><i class="fas fa-school"></i></a>
@@ -83,6 +84,7 @@
    </div>
    <span>Rejoignez nous maintenant!</span>
    <input type="text" name="nameReg" placeholder="Pseudo" />
+   <input type="text" name="login" placeholder="Login" />
    <input type="email" name="emailReg" placeholder="Email" />
    <input type="password" name="passwordReg" placeholder="Mot de passe" />
    <button name="registerSubmit">Nous Rejoindre</button>

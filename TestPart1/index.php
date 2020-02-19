@@ -26,11 +26,11 @@
 			if (empty($_GET["pages"])|| $_GET["pages"]=="1")
 			{
 				for ($i=1; $i < 7; $i++) 
-	            { 
+                                { 
 					$fildediscussion = new FilDeDiscussion();
 					$fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($i);
 					$createur = fildediscussionManager::getCreateurWithId($i);
-			        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
+                                        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 						echo '<div class="box">';
 							echo '<div class="Content">';
 								echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
