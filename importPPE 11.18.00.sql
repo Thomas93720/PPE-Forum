@@ -26,6 +26,7 @@ titreFilDeDiscussion VARCHAR(64),
 dateOuverture DATE,
 Theme VARCHAR(64),
 idCreateur INT(11),
+idMessage INT(11),
 PRIMARY KEY(idFilDeDiscussion)
 );
 CREATE TABLE Message
@@ -43,6 +44,11 @@ ALTER TABLE FilDeDiscussion
 ADD CONSTRAINT FilDeDiscussion_idCreateur
 FOREIGN KEY (idCreateur)
 REFERENCES Compte(idCompte);
+
+ALTER TABLE FilDeDiscussion
+ADD CONSTRAINT FilDeDiscussion_idMessage
+FOREIGN KEY (idMessage)
+REFERENCES Message(idMessage);
 
 ALTER TABLE Compte
 ADD CONSTRAINT Compte_idMessage
@@ -76,4 +82,8 @@ INSERT INTO FilDeDiscussion(idFilDeDiscussion,dateOuverture,Theme,titreFilDeDisc
 (12,"2019-08-19","Discussions","Je galère en PHP",false,6);
 
 INSERT INTO Message(idMessage,libelle,dateEnvoi,titreMessage,idFilDeDiscussion,idAuteur) VALUES
-(1,"libelle","2001-09-11","titreMessage",1,2);
+(1,"libelle","2001-09-11","titreMessage",1,2),
+(2,"ceci est un message","2001-09-11","titreMessage",1,3),
+(3,"msg","2001-09-11","titreMessage",1,1),
+(4,"libelle","2001-09-11","titreMessage",2,4),
+(5,"libelle","2001-09-11","titreMessage",3,5);
