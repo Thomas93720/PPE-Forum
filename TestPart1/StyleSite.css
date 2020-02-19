@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800%27');
+
+body
+{
+	margin:0px;
+	background-size: contain;
+	font-family: 'Montserrat', sans-serif;
+	color:white;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	display: flex;
+	flex-direction: column;
+}
+.index
+{
+	width: 100%;
+}
+.entete
+{
+	text-align: center;
+}
+.barreDeNavigation
+{
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.barreDeNavigation a
+{
+	padding: 14px;
+	border-right: white 2px;
+	color: black;
+	text-decoration: none;
+	align-self: center;
+}
+.barreDeNavigation a:hover
+{
+	color:black;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+button
+{
+	background: black;
+	color: white;
+	cursor: pointer;
+	padding: 6px;
+	border:none;
+	font-size:16px;
+	margin-top: 6px;
+	border:solid 2px black;
+}
+button:hover
+{
+	background-color: white;
+	color: black;
+	transition: .7s;
+}
+input
+{
+	padding: 10px;
+	border:none;
+}
+.modesombre
+{
+	width: 22px;
+	height: 15px;
+	align-self: center;
+	justify-content: flex-end;
+}
+.partgauche
+{
+	width: 25%;
+}
+.milieu
+{
+	width: 50%;
+	color:black;
+	background-color: white;
+	border-top:solid 1px black;
+}
+.box
+{
+	background-color: white;
+	border-bottom: solid 1px black;
+	border-left: solid 1px black;
+	border-right: solid 1px black;
+	display: flex;
+}
+.box:hover
+{
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.Content
+{
+	width: 100%;
+	display: flex;
+}
+.titre
+{
+	text-decoration: none;
+	font-size: 30px;
+}
+.sousTitre
+{
+	color: grey;
+}
+.sousTitre
+{
+    color: grey;
+}
+.imageTheme
+{
+
+    width: 50px;
+    height: 100%;
+    margin-right: 20px;
+    width: 50px;
+    height: 100%;
+    margin-right: 20px;
+
+}
+.partdroite
+{
+    width: 25%;
+}
+.page
+{
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+    width: 100%;
+}
+.filDeDiscussion
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: 1px solid black;
+    align-self: center;
+    background-color: tan;
+}
+a
+{
+	text-decoration:none;
+	color: black;
+}
+.pub
+{
+	width: 75%;
+	height: 290px;
+	margin-top: 10px;
+}
+.bas
+{
+	padding: 10px;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.bas a 
+{
+	color: black;
+	margin-right: 5px;
+	text-decoration: none;
+	padding: 10px;
+}
+.bas a:hover
+{
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	color: black;
+}
+
+.Container
+{
+	color: black;
+	width: 25%;
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+
+
+@media screen and (max-width: 800px) {
+  div.page
+  {
+  	flex-direction: column;
+  }
+  div.milieu
+  {
+  	width: 100%;
+  }
+  div.barreDeNavigation
+  {
+  	flex-direction: column;
+  }
+  form
+  {
+  	align-self: center;
+  }
+  div.partgauche
+  {
+  	align-self: center;
+  }
+  div.partdroite
+  {
+  	align-self: center;
+  }
+}

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800%27');
+body
+{
+	margin:0px;
+	text-align: center;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	color:white;
+	font-family: 'Montserrat', sans-serif;
+}
+.barreDeNavigation
+{
+	background-color: white;
+	display: flex;
+	justify-content: center;
+}
+.barreDeNavigation a
+{
+	padding: 14px;
+	border-right: white 2px;
+	color: black;
+	text-decoration: none;
+	align-self: center;
+}
+.barreDeNavigation a:hover
+{
+	color:black;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+}
+.imageCercle
+{
+	height:106px;
+	width:106px;
+}
+.page
+{
+	display: flex;
+	background-color: green;
+	flex-direction: flex-start;
+}
+button
+{
+	background: black;
+	color: white;
+	cursor: pointer;
+	padding: 6px;
+	border:none;
+	font-size:16px;
+	margin-top: 6px;
+}
+input
+{
+	padding: 10px;
+	border:none;
+}
+hr
+{
+	margin-right: 20px;
+	margin-left: 20px;
+}
+.profilCard
+{
+	display: flex;
+	flex-direction: column;
+	margin-right: 10px;
+	margin-left: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	background-color: white;
+	color:black;
+	border-radius: 5px;
+}
+.column
+{
+	display: flex;
+	flex-direction: flex-start;
+}
+.gauche
+{
+	width:25%;
+}
+.milieu
+{
+	width: 50%;
+	background-color: white;
+	color: black;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	border-radius: 5px;
+}
