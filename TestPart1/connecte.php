@@ -1,7 +1,7 @@
 <?php
 	include("header.php");
 	include("datamanagers/DatabaseLinker.php");
-	include("datamanagers/fildediscussionManager.php");
+	include("data/fildediscussion.php");
 	include("data/compte.php");
 	include("data/message.php");
 ?>
@@ -19,14 +19,14 @@
 	<div class="milieu">
         <?php
         	$typeTriFilDeDiscussion = "dateOuverture ASC";
-			$tabFilDeDiscussion = fildediscussionManager::getAllFilDeDiscussion($typeTriFilDeDiscussion);
+			$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
 			if (empty($_GET["pages"])|| $_GET["pages"]=="1")
 			{
 				for ($i=1; $i < 12; $i++) 
 	            { 
 					$fildediscussion = new FilDeDiscussion();
-					$fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($i);
-					$createur = fildediscussionManager::getCreateurWithId($i);
+					$fildediscussion->getIdFilDeDiscussionWithId($i);
+					$createur = FilDeDiscussion::getCreateurWithId($i);
 			        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 						echo '<div class="box">';
 							echo '<div class="Content">';
@@ -41,10 +41,10 @@
 				}
 			}
             
-			$taille = sizeof(fildediscussionManager::getAllFilDeDiscussion(" idFilDeDiscussion ASC"));
+			$taille = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"));
 			$taille -= 12;
 			$cpt=12;
-			$nbpages = sizeof(fildediscussionManager::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))/6;
+			$nbpages = sizeof(FilDeDiscussion::getAllFilDeDiscussion(" idFilDeDiscussion ASC"))/6;
 			if (!empty($_GET["pages"])) 
 			{
 				if ($_GET["pages"]=="2") 
@@ -52,8 +52,8 @@
 					for ($i=$cpt; $i < $cpt+12; $i++) 
 		            { 
 						$fildediscussion = new FilDeDiscussion();
-						$fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($i);
-						$createur = fildediscussionManager::getCreateurWithId($i);
+						$fildediscussion->getIdFilDeDiscussionWithId($i);
+						$createur = FilDeDiscussion::getCreateurWithId($i);
 						if (!empty($fildediscussion->getIdFilDeDiscussion())) 
 						{
 							echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';

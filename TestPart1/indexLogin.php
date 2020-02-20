@@ -12,8 +12,8 @@
 <body>
   <?php
   /*sha1()*/
-    include_once("data/compte.php");
-    include_once("datamanagers/DatabaseLinker.php");
+    include("data/compte.php");
+    include("datamanagers/DatabaseLinker.php");
     include_once("datamanagers/compteManager.php");
 
     $connexion = DatabaseLinker::getConnexion();
@@ -25,7 +25,7 @@
        }
        else
        {
-          $isUserCo = CompteManager::identification($_POST["motdepasse"],$_POST["identifiant"]);
+          $isUserCo = Compte::identification($_POST["motdepasse"],$_POST["identifiant"]);
           if ($isUserCo==NULL) 
           {
             $erreur = '<br><label class="erreur">Mauvais identifiants</label>';
@@ -36,43 +36,7 @@
             $_SESSION["idUser"] = $isUserCo->getIdCompte();
             include("header.php");
             ?>
-        <?php
-
-            header('Location: connecte.php');
-            exit();
-          }
-      }  
-    }
-  ?>
-    
-    
-   <?php
-    $connexion = DatabaseLinker::getConnexion();
-    if (isset($_POST["registerSubmit"])) 
-    {
-      if(empty($_POST["passwordReg"]) || empty($_POST["emailReg"]) || empty($_POST["nameReg"]) || empty($_POST["login"]))  
-       {  
-          echo '<label>Veuillez remplir tous les champs</label>';  
-       }
-       else
-       {
-          $isvalide = CompteManager::VerifNewId($_POST["nameReg"]);
-          if ($isvalide==false) 
-          {
-            echo 'Identifiants invalide';
-          }
-          else
-          {
-            $compte = new compte();
-            $compte->setMotDePasse($_POST["passwordReg"]);
-            $compte->setEmail($_POST["emailReg"]);
-            $compte->setNomCompte($_POST["nameReg"]);
-            $compte->setLogin($_POST["login"]);
-            compteManager::CreateNewCompte($compte);
-            session_start();
-            $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
-
-
+    <?php
             header('Location: connecte.php');
             exit();
           }
@@ -81,7 +45,7 @@
   ?>
 <div class="container" id="container">
  <div class="form-container sign-up-container">
-  <form action="#" method="post">
+  <form action="indexLogin.php" method="post">
    <h1>Créer votre compte</h1>
    <div class="social-container">
     <a href="http://sio.jbdelasalle.com/" class="social"><i class="fas fa-school"></i></a>
@@ -126,6 +90,39 @@
     <h1>Bonjour!</h1>
     <p>Créez votre compte dès maintenant!</p>
     <button class="ghost" id="signUp">S'inscrire!</button>
+    <?php
+    $connexion = DatabaseLinker::getConnexion();
+    if (isset($_POST["registerSubmit"])) 
+    {
+      if(empty($_POST["passwordReg"]) || empty($_POST["emailReg"]) || empty($_POST["nameReg"]) || empty($_POST["login"]))  
+       {  
+          echo '<label>Veuillez remplir tous les champs</label>';  
+       }
+       else
+       {
+          $isvalide = CompteManager::VerifNewId($_POST["nameReg"]);
+          if ($isvalide==false) 
+          {
+            echo 'Identifiants invalide';
+          }
+          else
+          {
+            $compte = new Compte();
+            $compte->setMotDePasse($_POST["passwordReg"]);
+            $compte->setEmail($_POST["emailReg"]);
+            $compte->setNomCompte($_POST["nameReg"]);
+            $compte->setLogin($_POST["login"]);
+            compteManager::CreateNewCompte($compte);
+            session_start();
+            $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
+
+
+            header('Location: connecte.php');
+            exit();
+          }
+      }  
+    }
+  ?>
    </div>
   </div>
  </div>
