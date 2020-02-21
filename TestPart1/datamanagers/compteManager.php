@@ -121,5 +121,19 @@
             $state->execute();
         }
         
+        public static function EnvoieMail($compte)
+        {
+            $to      = $compte->getEmail();
+            $subject = 'certification du compte';
+            $message = "Un compte avec cette a etait crée sur ppe forum, clicer sur le lien pour certifier:"."<a href='http://sio.jbdelasalle.com/~tprezot/Forum/certificat.php'>Certification</a>";
+            $headers = array(
+                'From' => 'Auros1805@gmail.com',
+                'Reply-To' => 'Auros1805@gmail.com',
+                'X-Mailer' => 'PHP/' . phpversion()
+            );
+
+            mail($to, $subject, $message, $headers);
+        }
+        
     }
 ?>
