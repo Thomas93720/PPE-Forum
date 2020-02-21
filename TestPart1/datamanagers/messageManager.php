@@ -1,5 +1,5 @@
 <?php
-    include("data/message.php");
+    include_once("data/message.php");
     class messageManager
     {
         public function getIdMessageWithId($idMessage)

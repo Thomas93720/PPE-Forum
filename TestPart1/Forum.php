@@ -1,9 +1,11 @@
 <?php
 	include("HeaderForum.php");
-	include("datamanagers/DatabaseLinker.php");
-	include("datamanagers/fildediscussionManager.php");
 	include("data/compte.php");
 	include("data/message.php");
+	include("datamanagers/DatabaseLinker.php");
+	include("datamanagers/fildediscussionManager.php");
+	
+
 	if (!empty($_GET["index"])) 
 	{
 		session_start();  
@@ -16,14 +18,14 @@
 			$fildediscussion = new FilDeDiscussion();
 			$fildediscussion->getIdFilDeDiscussionWithId($id);
 			$createur = FilDeDiscussion::getCreateurWithId($id);
-			$message = new Message();
-			$message->findMessageWithIdFilDeDiscussion(1);
-			echo $message->getIdMessage();
+			$messageFilDeDiscussion = fildediscussionManager::findMessageWithIdFilDeDiscussion(1);
+			echo $messageFilDeDiscussion->getIdMessage();
 			if ($_GET["index"])
 			{ 
 				echo '<h1>'.$fildediscussion->getTitreFilDeDiscussion().'</h1>';
 
 				echo '<p>Crée par : '.$createur->getNomCompte().'</p>';
+				echo '<p>le : '.$fildediscussion->getDateCreation().'</p>';
 				echo '<hr>';
 			}
 			?>
@@ -90,18 +92,43 @@
 			include("BarreDeNavNonCo.php");
 			$id = $_GET["index"];
 			$fildediscussion = new FilDeDiscussion();
-                        $fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($id);
-                        $createur = fildediscussionManager::getCreateurWithId($id);
-			$message = new Message();
-			$message->findMessageWithIdFilDeDiscussion(1);
-			echo $message->getIdMessage();
+			$fildediscussion->getIdFilDeDiscussionWithId($id);
+			$createur = FilDeDiscussion::getCreateurWithId($id);
 			if ($_GET["index"])
 			{ 
 				echo '<h1>'.$fildediscussion->getTitreFilDeDiscussion().'</h1>';
-
+				$msg = fildediscussionManager::findAllMessage($id);
 				echo '<p>Crée par : '.$createur->getNomCompte().'</p>';
+				echo '<p>le : '.$fildediscussion->getDateCreation().'</p>';
+				echo '<p>'.sizeof($msg)." message(s)".'</p>';
 				echo '<hr>';
+				echo "<br>";
+				$utilisateur = new Compte();
+				
+				foreach ($msg as $linemsg) 
+				{
+			    	?>
+			    	<div class="messages"><br>
+			  			<div class="topMsg">
+					        <img src="https://www.shareicon.net/data/2016/09/01/822739_user_512x512.png" alt="Avatar" class="avatar">
+					        <div class="titreNomCompte"><h4><?php $utilisateur->initCompte($linemsg->getIdAuteur()); echo ' '.$utilisateur->getNomCompte(); ?></h4></div><br>
+					    </div>
+				        <hr>
+				        <div = class="contentMsg">
+				        	<p><?php echo $linemsg->getLibelle(); ?></p>
+				        	<div class="leftBouton">
+					        	<div class="bouton">
+				        			<button type="button"><i class="fa fa-thumbs-up"></i> Merci</button> 
+				        		</div>
+				        	</div>
+				        </div>
+			    	</div>
+			    	<?php
+				}
+				
 			}
+
 		}
 	}
+	include("footer.php");
 	?>

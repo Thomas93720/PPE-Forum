@@ -6,6 +6,7 @@
         private $dateEnvoi;
         private $titreMessage;
         private $idFilDeDiscussion;
+        private $idAuteur;
         
         function getIdMessage() {
             return $this->idMessage;
@@ -27,8 +28,16 @@
             return $this->idFilDeDiscussion;
         }
 
+        function getIdAuteur() {
+            return $this->idAuteur;
+        }
+
         function setIdMessage($idMessage) {
             $this->idMessage = $idMessage;
+        }
+
+        function setIdAuteur($idAuteur) {
+            $this->idAuteur = $idAuteur;
         }
 
         function setLibelle($libelle) {
@@ -81,23 +90,8 @@
             }
             return $tab;
         }
-        public function findMessageWithIdFilDeDiscussion($idFilDeDiscussion)
-        {
-            $tab = array();
-            $connex=DatabaseLinker::getConnexion();
-            $state=$connex->prepare("SELECT * FROM Message WHERE idFilDeDiscussion =? ORDER BY dateEnvoi");
-            $state->BindParam(1,$idFilDeDiscussions);
-            $state->execute();
-            $result = $state->fetchALL();
-            foreach ($result as $ligneResultat) 
-            {
-                $this->idMessage = $ligneResultat["idMessage"];
-                $this->dateEnvoi = $ligneResultat["dateEnvoi"];
-                $this->libelle = $ligneResultat["libelle"];
-                $this->titreMessage = $ligneResultat["titreMessage"];
-                $this->idFilDeDiscussion = $ligneResultat["idFilDeDiscussion"];
-            }
-        }
+        
+
 
     }
 ?>

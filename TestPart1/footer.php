@@ -4,6 +4,7 @@
           <div class="social-media">
             <a href="http://sio.jbdelasalle.com"><i class="fas fa-school"></i></a>
             <a href="indexRulePage"><i class="fas fa-scroll"></i></a>
+            <a href="indexInfo.php"><i class="fas fa-info"></i></a>
             <a href="#returnTop"><i class="fas fa-angle-double-up"></i></a>
           </div>
           <p class="rights-text">© 2020 Créé par Thomas PREZOT, Mathis CHAMBON et Hugo DENISE</p>
