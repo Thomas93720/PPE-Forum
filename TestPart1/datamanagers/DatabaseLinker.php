@@ -10,14 +10,13 @@
 		public static function getConnexion()
 		{
                         $url = $_SERVER['SERVER_NAME'];
-                        echo $url;
                         if($url == "sio.jbdelasalle.com")
                         {
                             $URL = 'mysql:host=192.168.153.10:3306;dbname=201920_base01_tprezot;charset=utf8';
                             $id = 'tprezot';
                             $mdp = 'btssio';
                             $PDO;
-                            DatabaseLinker::$PDO = new PDO(DatabaseLinker::$URL, DatabaseLinker::$id, DatabaseLinker::$mdp);
+                            DatabaseLinker::$PDO = new PDO($URL, $id, $mdp);
                         }
                         else
                         {

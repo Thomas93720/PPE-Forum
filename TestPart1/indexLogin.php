@@ -81,6 +81,7 @@
             $compte->setNomCompte($_POST["nameReg"]);
             $compte->setLogin($_POST["login"]);
             compteManager::CreateNewCompte($compte);
+            compteManager::EnvoieMail($compte);
             session_start();
             $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
             header('Location: testemail.php');

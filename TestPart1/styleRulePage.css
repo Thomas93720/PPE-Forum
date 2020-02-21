@@ -59,7 +59,24 @@ body{
 	font-size: 15px;
 	font-weight: 500;
 }
+a button{
+	background: none;
+	color: black;
+	width: 350px;
+	height: 40px;
+	margin-top: 30px;
+	border: 1px solid white;
+	font-size: 18px;
+	border-radius: 4px;
+	overflow: hidden;
+}
 
+a button:hover{
+	background: #3F4043;
+	color: #fff;
+	cursor: pointer;
+	transition: .8s;
+}
 @media screen and (max-width: 500px){
 	.regle{
 		width: 100%;
