@@ -47,6 +47,12 @@
 				<h2>Pas de publicités</h2>
 				<p>Il est interdit de poster des publicités sur le Forum</p>
 			</div>
+
+			<div class="buttonRetour">
+				<a href="index.php">
+					<button class="button">Accepter et retourner au Forum</button>
+				</a>
+			</div>
 		</div>
 	</div>
 </body>
