@@ -1,12 +1,6 @@
 <?php
 	class DatabaseLinker
 	{
-		/*
-		private static $URL = 'mysql:host=192.168.153.10:3306;dbname=201920_base01_tprezot;charset=utf8';
-		private static $id = 'tprezot';
-		private static $mdp = 'btssio';
-		private static $PDO;
-		*/
 		private static $URL = 'mysql:host=localhost;dbname=PPE;charset=utf8';
 		private static $id = 'root';
 		private static $mdp = 'root';
@@ -15,11 +9,24 @@
 		
 		public static function getConnexion()
 		{
-			if(empty(DatabaseLinker::$PDO))
-			{
-				DatabaseLinker::$PDO = new PDO(DatabaseLinker::$URL, DatabaseLinker::$id, DatabaseLinker::$mdp);
-			}
-			return DatabaseLinker::$PDO;
+                        $url = $_SERVER['SERVER_NAME'];
+                        echo $url;
+                        if($url == "sio.jbdelasalle.com")
+                        {
+                            $URL = 'mysql:host=192.168.153.10:3306;dbname=201920_base01_tprezot;charset=utf8';
+                            $id = 'tprezot';
+                            $mdp = 'btssio';
+                            $PDO;
+                            DatabaseLinker::$PDO = new PDO(DatabaseLinker::$URL, DatabaseLinker::$id, DatabaseLinker::$mdp);
+                        }
+                        else
+                        {
+                            if(empty(DatabaseLinker::$PDO))
+                            {
+                            	DatabaseLinker::$PDO = new PDO(DatabaseLinker::$URL, DatabaseLinker::$id, DatabaseLinker::$mdp);
+                            }
+                        }    
+                        return DatabaseLinker::$PDO;
 		}
 	}
 ?>
