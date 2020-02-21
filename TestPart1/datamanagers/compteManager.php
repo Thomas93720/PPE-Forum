@@ -120,18 +120,28 @@
 
             $state->execute();
         }
-        public static function EnvoieMail($compte)
+        
+        public static function getCompteWithId($id)
         {
-            $to      = $compte->getEmail();
-            $subject = 'certification du compte';
-            $message = "Un compte avec cette a etait crée sur ppe forum, clicer sur le lien pour certifier:"."<a href='http://sio.jbdelasalle.com/~tprezot/Forum/certificat.php'>Certification</a>";
-            $headers = array(
-                'From' => 'Auros1805@gmail.com',
-                'Reply-To' => 'Auros1805@gmail.com',
-                'X-Mailer' => 'PHP/' . phpversion()
-            );
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("SELECT * FROM Compte WHERE idCompte = ?");
+            $state->bindParam(1, $id);
+             $state->execute();
 
-            mail($to, $subject, $message, $headers);
+            $resultat = $state->fetchAll();
+            $compte = new Compte();
+            foreach ($resultat as $ligneResultat) 
+            {
+                $compte->setIdCompte($ligneResultat["idCompte"]);
+                $compte->setNomCompte($ligneResultat["nomCompte"]);
+                $compte->setIdMessage($ligneResultat["idMessage"]);
+                $compte->setDateCreation($ligneResultat["dateCreation"]);
+                $compte->setLogin($ligneResultat["login"]);
+                $compte->setDateDebutBan($ligneResultat["dateDebutBan"]);
+                $compte->setDateFinBan($ligneResultat["dateFinBan"]);
+                $compte->setMotDePasse($ligneResultat["motDePasse"]);
+            }
+            return $compte;
         }
     }
 ?>
