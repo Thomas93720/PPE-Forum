@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Bienvenue sur le Forum!</title>
-	<link rel="stylesheet" type="text/css" href="styleTeamPage.css">
+	<link rel="stylesheet" type="text/css" href="styleConfirm.css">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js" />
 	<script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
