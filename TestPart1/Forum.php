@@ -1,7 +1,7 @@
 <?php
 	include("HeaderForum.php");
 	include("datamanagers/DatabaseLinker.php");
-	include("data/fildediscussion.php");
+	include("datamanagers/fildediscussionManager.php");
 	include("data/compte.php");
 	include("data/message.php");
 	if (!empty($_GET["index"])) 
@@ -90,8 +90,8 @@
 			include("BarreDeNavNonCo.php");
 			$id = $_GET["index"];
 			$fildediscussion = new FilDeDiscussion();
-			$fildediscussion->getIdFilDeDiscussionWithId($id);
-			$createur = FilDeDiscussion::getCreateurWithId($id);
+                        $fildediscussion = fildediscussionManager::getFilDeDiscussionWithId($id);
+                        $createur = fildediscussionManager::getCreateurWithId($id);
 			$message = new Message();
 			$message->findMessageWithIdFilDeDiscussion(1);
 			echo $message->getIdMessage();
