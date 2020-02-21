@@ -144,11 +144,11 @@
             }
             return null;
         }
-        public static function findFilDeDiscussion($typeTri)
+        public static function findFilDeDiscussion()
         {
             $tab= array();
             $connex=DatabaseLinker::getConnexion();
-            $state=$connex->prepare("SELECT * FROM Compte ORDER BY ".$typeTri);
+            $state=$connex->prepare("SELECT * FROM Compte");
             $state->execute();
             $result = $state->fetchALL();
             foreach ($result as $ligneResult) 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styleFooter.css">
 	<script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="styleFooter.css">
     <title>Forum</title>
 </head>
 <body>

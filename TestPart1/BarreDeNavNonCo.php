@@ -1,4 +1,4 @@
-<div class="entete">
+<div id="returnTop" class="entete">
  	<h1>Forum</h1>
 	<p>Bienvenue sur le Forum</p>
 </div>

@@ -65,11 +65,11 @@
             }
             return null;
         }
-        public static function findFilDeDiscussion($typeTri)
+        public static function findFilDeDiscussion()
         {
             $tab= array();
             $connex=DatabaseLinker::getConnexion();
-            $state=$connex->prepare("SELECT * FROM Compte ORDER BY ".$typeTri);
+            $state=$connex->prepare("SELECT * FROM Compte");
             $state->execute();
             $result = $state->fetchALL();
             foreach ($result as $ligneResult) 
@@ -108,19 +108,18 @@
         public static function CreateNewCompte($compte)
         {
             $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("INSERT INTO Compte(nomCompte, email, motDePasse, dateCreation, login)VALUES (?,?,?, CURDATE(), ?)");
             $nomCompte = $compte->getNomCompte();
             $login = $compte->getLogin();
             $email = $compte->getEmail();
             $mdp = $compte->getMotDePasse();
-            $state = $bdd->prepare("INSERT INTO compte(nomCompte, email, motDePasse, dateCreation, login)VALUES (?,?,?, CURDATE(), ?)");
             $state->bindParam(1, $nomCompte);
             $state->bindParam(2, $email);
             $state->bindParam(3, $mdp);
             $state->bindParam(4, $login);
-            
+
             $state->execute();
         }
-        
         public static function EnvoieMail($compte)
         {
             $to      = $compte->getEmail();
@@ -134,6 +133,5 @@
 
             mail($to, $subject, $message, $headers);
         }
-        
     }
 ?>

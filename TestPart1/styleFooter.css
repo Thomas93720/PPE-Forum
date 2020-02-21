@@ -6,11 +6,13 @@ body{
 
 footer{
   background: #f1f1f1;
-  padding: 90px 0;
+  padding: 25px 0;
 }
 
 .footer-container{
+  margin-top: 20px;
   max-width: 1300px;
+  color: black;
   margin: auto;
   padding: 0 20px;
   display: flex;

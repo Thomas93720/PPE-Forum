@@ -58,6 +58,38 @@
    <input type="password" name="passwordReg" placeholder="Mot de passe" />
    <button name="registerSubmit">Nous Rejoindre</button>
   </form>
+  <?php
+    $connexion = DatabaseLinker::getConnexion();
+    if (isset($_POST["registerSubmit"])) 
+    {
+      if(empty($_POST["passwordReg"]) || empty($_POST["emailReg"]) || empty($_POST["nameReg"]) || empty($_POST["login"]))  
+       {  
+          echo '<label>Veuillez remplir tous les champs</label>';  
+       }
+       else
+       {
+          $isvalide = CompteManager::VerifNewId($_POST["nameReg"]);
+          if ($isvalide==false) 
+          {
+            echo 'Identifiants invalide';
+          }
+          else
+          {
+            $compte = new Compte();
+            $compte->setMotDePasse($_POST["passwordReg"]);
+            $compte->setEmail($_POST["emailReg"]);
+            $compte->setNomCompte($_POST["nameReg"]);
+            $compte->setLogin($_POST["login"]);
+            compteManager::CreateNewCompte($compte);
+            compteManager::EnvoieMail($compte);
+            session_start();
+            $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
+            header('Location: connecte.php');
+            exit();
+          }
+      }  
+    }
+  ?>
  </div>
  <div class="form-container sign-in-container">
   <form action="#" method="post">
@@ -90,40 +122,6 @@
     <h1>Bonjour!</h1>
     <p>Créez votre compte dès maintenant!</p>
     <button class="ghost" id="signUp">S'inscrire!</button>
-    <?php
-    $connexion = DatabaseLinker::getConnexion();
-    if (isset($_POST["registerSubmit"])) 
-    {
-      if(empty($_POST["passwordReg"]) || empty($_POST["emailReg"]) || empty($_POST["nameReg"]) || empty($_POST["login"]))  
-       {  
-          echo '<label>Veuillez remplir tous les champs</label>';  
-       }
-       else
-       {
-          $isvalide = CompteManager::VerifNewId($_POST["nameReg"]);
-          if ($isvalide==false) 
-          {
-            echo 'Identifiants invalide';
-          }
-          else
-          {
-            $compte = new Compte();
-            $compte->setMotDePasse($_POST["passwordReg"]);
-            $compte->setEmail($_POST["emailReg"]);
-            $compte->setNomCompte($_POST["nameReg"]);
-            $compte->setLogin($_POST["login"]);
-            compteManager::CreateNewCompte($compte);
-            EnvoieMail($compte);
-            session_start();
-            $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
-
-
-            header('Location: connecte.php');
-            exit();
-          }
-      }  
-    }
-  ?>
    </div>
   </div>
  </div>
