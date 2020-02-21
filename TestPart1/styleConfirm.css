@@ -1,0 +1,30 @@
+body{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	text-align: center;
+}
+
+a button {
+	margin: 15px;
+	background: none;
+	color: #000000;
+	width: 180px;
+	height: 80px;
+	border: 1px solid #3F4043;
+	font-size: 18px;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: .4s;
+}
+
+a button:hover{
+	background: #3F4043;
+	color: #fff;
+	cursor: pointer;
+	transition: .8s;
+	height: 100px;
+	width: 280px;
+}
