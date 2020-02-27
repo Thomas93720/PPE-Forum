@@ -43,6 +43,10 @@ a {
 	margin: 15px 0;
 }
 
+.returnButton{
+	margin-top: 50px;
+}
+
 button {
 	border-radius: 20px;
 	border: 1px solid #005378;

@@ -134,6 +134,11 @@
   </div>
  </div>
 </div>
+<div class="returnButton">
+  <a href="index.php">
+    <button class="button">Revenir au Forum</button>
+  </a>
+</div>
 <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
