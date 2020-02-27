@@ -32,7 +32,7 @@
 										echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 										echo '<div>';
 											echo '<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
@@ -57,7 +57,7 @@
 												echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 												echo '<div>';
 													echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-													echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+													echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 												echo '</div>
 											</div>
 										</div>
@@ -110,7 +110,7 @@
 										echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 										echo '<div>';
 											echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().' Thème : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
@@ -135,7 +135,7 @@
 												echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 												echo '<div>';
 													echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-													echo '<div class="sousTitre">'.'Createur : '.$createur->getNomCompte().' Theme : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+													echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().' Thème : '.$fildediscussion->getThemeFilDeDiscussion().' date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 												echo '</div>
 											</div>
 										</div>

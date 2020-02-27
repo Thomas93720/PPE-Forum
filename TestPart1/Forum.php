@@ -94,6 +94,7 @@
 			    	<?php
 				}
 				?>
+				<h2>Ajouter un commmentaire</h2>
 				<form method="POST">
 					<div class="postCom">
 						<textarea name="message"></textarea>

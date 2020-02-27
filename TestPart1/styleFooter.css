@@ -38,7 +38,7 @@ footer{
 }
 
 .social-media a:hover{
-  color: #fc5c65;
+  color: #005378;
 }
 
 .right-col h1{
@@ -48,7 +48,7 @@ footer{
 .border{
   width: 160px;
   height: 4px;
-  background: #fc5c65;
+  background: #005378;
 }
 
 .newsletter-form{
@@ -75,7 +75,7 @@ footer{
   padding: 18px 40px;
   font-size: 16px;
   color: #f1f1f1;
-  background: #fc5c65;
+  background: #005378;
   border: none;
   font-weight: 700;
   outline: none;
