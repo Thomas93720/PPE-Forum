@@ -45,8 +45,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	border: 1px solid #005378;
+	background : #005378;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -55,7 +55,13 @@ button {
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
 }
-
+button:hover
+{
+	background-color: white;
+	color: black;
+	transition: .5s;
+	cursor: pointer;
+}
 button:active {
 	transform: scale(0.95);
 }
@@ -161,7 +167,7 @@ input {
 .overlay {
 	background: #FF416C;
 	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: #005378;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

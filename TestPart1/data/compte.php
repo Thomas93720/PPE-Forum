@@ -3,6 +3,7 @@
     {
         private $idCompte;
         private $isCompteBanni;
+        private $isCompteAdmin;
         private $dateDebutBan;
         private $dateFinBan;
         private $motDePasse;
@@ -22,12 +23,16 @@
             $this->email = $email;
         }
 
-                function getIdCompte() {
+        function getIdCompte() {
             return $this->idCompte;
         }
 
-        function getIdCompteBanni() {
-            return $this->idCompteBanni;
+        function getIsCompteBanni() {
+            return $this->isCompteBanni;
+        }
+
+        function getIsCompteAdmin() {
+            return $this->isCompteAdmin;
         }
 
         function getDateDebutBan() {
@@ -66,8 +71,12 @@
             $this->idCompte = $idCompte;
         }
 
-        function setIdCompteBanni($idCompteBanni) {
-            $this->idCompteBanni = $idCompteBanni;
+        function setIsCompteBanni($isCompteBanni) {
+            $this->isCompteBanni = $isCompteBanni;
+        }
+
+        function setIsCompteAdmin($isCompteAdmin) {
+            $this->isCompteAdmin = $isCompteAdmin;
         }
 
         function setDateDebutBan($dateDebutBan) {
@@ -121,6 +130,8 @@
                 $this->dateDebutBan = $ligneResultat["dateDebutBan"];
                 $this->dateFinBan = $ligneResultat["dateFinBan"];
                 $this->motDePasse = $ligneResultat["motDePasse"];
+                $this->isCompteBanni = $ligneResultat["isCompteBanni"];
+                $this->isCompteAdmin = $ligneResultat["isCompteAdmin"];
             }
         }
         public static function identification($mdp,$login)
@@ -144,7 +155,7 @@
             }
             return null;
         }
-        public static function findFilDeDiscussion()
+        public static function findFilDeDiscussion($typeTri)
         {
             $tab= array();
             $connex=DatabaseLinker::getConnexion();

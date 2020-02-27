@@ -37,5 +37,17 @@
             }
             return $tab;
         }
+        public static function insertMessage($message)
+        {
+            $content = $message->getLibelle();
+            $idAuteur = $message->getIdAuteur();
+            $idFilDeDiscussion = $message->getIdFilDeDiscussion();
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("INSERT INTO Message(idAuteur,dateEnvoi,libelle,idFilDeDiscussion) VALUES(?,CURDATE(),?,?)");
+            $state->bindParam(1,$idAuteur);
+            $state->bindParam(2,$content);
+            $state->bindParam(3,$idFilDeDiscussion);
+            $state->execute();
+        }
     }
 ?>

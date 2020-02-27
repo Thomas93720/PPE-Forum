@@ -2,13 +2,14 @@ body{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: #005378;
 	font-family: 'Montserrat', sans-serif;
+	color: white;
 }
 
 .regles{
 	text-align: center;
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: #005378;
 }
 
 .regles h1{
@@ -38,7 +39,7 @@ body{
 }
 
 .regle:hover{
-	background: #ddd;
+	background: #3F4043;
 }
 
 .regle i{
@@ -55,13 +56,13 @@ body{
 }
 
 .regle p{
-	color: black;
+	color: white;
 	font-size: 15px;
 	font-weight: 500;
 }
 a button{
 	background: none;
-	color: black;
+	color: white;
 	width: 350px;
 	height: 40px;
 	margin-top: 30px;

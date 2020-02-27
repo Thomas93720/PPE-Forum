@@ -32,20 +32,29 @@
           }
           else
           {
-            session_start();
+            if (compteManager::isCompteBan($isUserCo->getIdCompte())==1) 
+            {
+              header('Location: ban.php');
+              exit();
+            }
+            else
+            {
+              session_start();
             $_SESSION["idUser"] = $isUserCo->getIdCompte();
             include("header.php");
             ?>
-    <?php
-            header('Location: connecte.php');
+            <?php
+            header('Location: index.php');
             exit();
           }
+            }
+            
       }  
     }
   ?>
 <div class="container" id="container">
  <div class="form-container sign-up-container">
-  <form action="indexLogin.php" method="post">
+  <form action="#" method="post">
    <h1>Créer votre compte</h1>
    <div class="social-container">
     <a href="http://sio.jbdelasalle.com/" class="social"><i class="fas fa-school"></i></a>
@@ -81,10 +90,9 @@
             $compte->setNomCompte($_POST["nameReg"]);
             $compte->setLogin($_POST["login"]);
             compteManager::CreateNewCompte($compte);
-            compteManager::EnvoieMail($compte);
             session_start();
             $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
-            header('Location: testemail.php');
+            header('Location: index.php');
             exit();
           }
       }  

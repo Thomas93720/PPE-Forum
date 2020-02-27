@@ -44,6 +44,26 @@
                 $this->motDePasse = $ligneResultat["motDePasse"];
             }
         }
+        public static function isCompteBan($idCompte)
+        {
+            $use = new Compte();
+            $use->initCompte($idCompte);
+            if ($use->getIsCompteBanni()) 
+            {
+                return 1;
+            }
+            return 0;
+        }
+        public static function isCompteAdmin($idCompte)
+        {
+            $use = new Compte();
+            $use->initCompte($idCompte);
+            if ($use->getIsCompteAdmin()) 
+            {
+                return 1;
+            }
+            return 0;
+        }
         public static function identification($mdp,$login)
         {
             $bdd=DatabaseLinker::getConnexion();
@@ -120,7 +140,6 @@
 
             $state->execute();
         }
-        
         public static function getCompteWithId($id)
         {
             $bdd=DatabaseLinker::getConnexion();
@@ -144,3 +163,4 @@
             return $compte;
         }
     }
+?>
