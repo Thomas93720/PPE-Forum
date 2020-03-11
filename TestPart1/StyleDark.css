@@ -6,7 +6,7 @@ body
 	background-size: contain;
 	font-family: 'Montserrat', sans-serif;
 	color:white;
-	background : #005378;
+	background : black;
 	display: flex;
 	flex-direction: column;
 }

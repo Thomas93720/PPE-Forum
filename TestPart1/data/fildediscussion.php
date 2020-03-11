@@ -6,9 +6,10 @@
         private $titreFilDeDiscussion;
         private $dateCreation;
         private $theme;
+        private $idCreateur;
         
         public function getIsFilDeDiscussionClos() {
-            return $this->FilDeDiscussionClos;
+            return $this->isFilDeDiscussionClos;
         }
 
         public function setIsFilDeDiscussionClos($FilDeDiscussionClos) {
@@ -30,6 +31,10 @@
             return $this->theme;
         }
 
+        public function getIdCreateur() {
+            return $this->idCreateur;
+        }
+
         public function setIdFilDeDiscussion($idFilDeDiscussion) {
             $this->idFilDeDiscussion = $idFilDeDiscussion;
         }
@@ -45,6 +50,11 @@
         public function setThemeFilDeDiscussion($theme) {
             $this->theme = $theme;
         }
+
+        public function setIdCreateur($idCreateur) {
+            $this->idCreateur = $idCreateur;
+        }
+
         public function getIdFilDeDiscussionWithId($idFilDeDiscussion)
         {
             $bdd=DatabaseLinker::getConnexion();
@@ -59,6 +69,7 @@
                 $this->titreFilDeDiscussion = $ligneResultat["titreFilDeDiscussion"];
                 $this->theme = $ligneResultat["Theme"];
                 $this->isFilDeDiscussionClos = $ligneResultat["isFilDeDiscussionClos"];
+                $this->idCreateur = $ligneResultat["idCreateur"];
             }
         }
         public static function getAllFilDeDiscussion($typeTri)
@@ -76,6 +87,7 @@
                 $user->setTitreFilDeDiscussion($ligneResult["titreFilDeDiscussion"]);
                 $user->setThemeFilDeDiscussion($ligneResult["Theme"]);
                 $user->setIsFilDeDiscussionClos($ligneResult["isFilDeDiscussionClos"]);
+                $user->setIdCreateur($ligneResult["idCreateur"]);
                 $tab[] = $user;
             }
             return $tab;

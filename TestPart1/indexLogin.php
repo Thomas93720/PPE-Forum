@@ -11,6 +11,7 @@
 </head>
 <body>
   <?php
+  /*sha1()*/
     include("data/compte.php");
     include("datamanagers/DatabaseLinker.php");
     include_once("datamanagers/compteManager.php");
@@ -33,7 +34,7 @@
           {
             if (compteManager::isCompteBan($isUserCo->getIdCompte())==1) 
             {
-              header('Location: ban.php');
+              header('Location: ban.php?id='.$isUserCo->getIdCompte());
               exit();
             }
             else

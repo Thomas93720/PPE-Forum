@@ -21,7 +21,22 @@
             }
             return $id;
         }
-        
+        public static function banCompteDef($idCompte)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("UPDATE Compte SET isCompteBanni = 1 WHERE idCompte = ?");
+            $state->bindParam(1,$idCompte);
+            $state->execute();
+        }
+        public static function banCompteTemp($idCompte,$raison,$dateFin)
+        {
+            $bdd=DatabaseLinker::getConnexion($dateFin,$idCompte,$raison);
+            $state = $bdd->prepare("UPDATE Compte SET dateDebutBan = CURDATE(),dateFinBan=? ,isCompteBanni=1,raisonBan = ? WHERE idCompte = ?");
+            $state->bindParam(1,$dateFin);
+            $state->bindParam(2,$raison);
+            $state->bindParam(3,$idCompte);
+            $state->execute();
+        }
         public function initCompte($idCompte)
         {
             $bdd=DatabaseLinker::getConnexion();

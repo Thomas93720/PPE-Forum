@@ -13,6 +13,7 @@
         private $idMessage;
         private $connexion;
         private $email;
+        private $raisonBan;
         
 
         function getEmail() {
@@ -67,6 +68,10 @@
             return $this->connexion;
         }
 
+        function getRaisonBan() {
+            return $this->raisonBan;
+        }
+
         function setIdCompte($idCompte) {
             $this->idCompte = $idCompte;
         }
@@ -110,6 +115,11 @@
         function setConnexion($connexion) {
             $this->connexion = $connexion;
         }
+
+        function setRasonBan($raison) {
+            $this->raisonBan = $raison;
+        }
+
         public function initCompte($idCompte)
         {
             $bdd=DatabaseLinker::getConnexion();
@@ -132,6 +142,7 @@
                 $this->motDePasse = $ligneResultat["motDePasse"];
                 $this->isCompteBanni = $ligneResultat["isCompteBanni"];
                 $this->isCompteAdmin = $ligneResultat["isCompteAdmin"];
+                $this->raisonBan = $ligneResultat["raisonBan"];
             }
         }
         public static function identification($mdp,$login)

@@ -2,6 +2,14 @@
     include("data/fildediscussion.php");
     class fildediscussionManager
     {
+        public static function deleteFilDeDiscussion($idFilDeDiscussion)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("DELETE FROM FilDeDiscussion WHERE idFilDeDiscussion = ?");
+            $state->bindParam(1,$idFilDeDiscussion);
+            $state->execute();
+        }
+
         public static function getFilDeDiscussionWithId($idFilDeDiscussion)
         {
             $fil = new fildediscussion();
@@ -17,6 +25,7 @@
                 $fil->setTitreFilDeDiscussion($ligneResultat["titreFilDeDiscussion"]);
                 $fil->setThemeFilDeDiscussion($ligneResultat["Theme"]);
                 $fil->setIsFilDeDiscussionClos($ligneResultat["isFilDeDiscussionClos"]);
+                $fil->setIdCreateur($ligneResultat["idCreateur"]);
             }
             return $fil;
         }
@@ -60,11 +69,11 @@
             }
             return $tab;
         }      
-        public static function getCreateurWithId($idCreateur)
+        public static function getCreateurWithId($idFilDeDiscussion)
         {
             $bdd=DatabaseLinker::getConnexion();
             $state = $bdd->prepare("SELECT nomCompte FROM Compte INNER JOIN FilDeDiscussion ON FilDeDiscussion.idCreateur = Compte.idCompte WHERE idFilDeDiscussion=?");
-            $state->bindParam(1,$idCreateur);
+            $state->bindParam(1,$idFilDeDiscussion);
             $state->execute();
             $resultat = $state->fetchAll();
             $compte = new Compte();
@@ -74,25 +83,25 @@
             }
             return $compte;
         }
-        public static function CreateNewFil()
+        public static function CreateNewFil($titreFilDeDiscussion,$Theme,$idCreateur)
         {
             $fildediscute = new fildediscussion();
             
             $bdd = DatabaseLinker::getConnexion();
-            $state = $bdd->prepare("INSER INTO fildediscussion(titreFilDeDiscussion, FilDeDiscussionClos) VALUES(?, ?);");
+            $state = $bdd->prepare("INSERT INTO FilDeDiscussion(titreFilDeDiscussion,dateOuverture,Theme,idCreateur) Values (?,CURDATE(),?,?)");
 
 
             $state->bindParam(1, $titreFilDeDiscussion);
-            $state->bindParam(2, $FilDeDiscussionClos);
+            $state->bindParam(2, $Theme);
+            $state->bindParam(3,$idCreateur);
             $state->execute();
             $resultats = $state->fetchAll();
             foreach ($resultats as $lineResultat)
             {
-                    $this->idTimbre = $lineResultat["idTimbre"];
-                    $this->titre = $lineResultat["titre"];
-                    $this->photo = $lineResultat["photo"];
-                    $this->dateImpression = $lineResultat["dateImpression"];
-                    $this->prix = $lineResultat["prix"];
+                $this->idFilDeDiscussion = $lineResultat["idFilDeDiscussion"];
+                $this->Theme = $lineResultat["Theme"];
+                $this->dateOuverture = $lineResultat["dateOuverture"];
+                $this->idCreateur = $lineResultat["idCreateur"];
             }
         }
         

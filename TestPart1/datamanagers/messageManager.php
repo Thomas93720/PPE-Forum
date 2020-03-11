@@ -49,5 +49,12 @@
             $state->bindParam(3,$idFilDeDiscussion);
             $state->execute();
         }
+        public static function deleteMessage($idMessage)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("DELETE FROM Message WHERE idMessage = ?");
+            $state->bindParam(1,$idMessage);
+            $state->execute();
+        }
     }
 ?>
