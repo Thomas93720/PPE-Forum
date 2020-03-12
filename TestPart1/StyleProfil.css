@@ -1,86 +1,99 @@
-.imageCercle
-{
-	width: 100px;
-	height: 100px;
+body{
+	margin: 0;
+	padding: 0;
+	background: #005378;
+	box-sizing: border-box;
+	font-family: Montserrat, sans-serif;
+	box-sizing: border-box;
 }
-body
-{
-	margin:0;
-	background : #005378;
-	color: white;
+
+.card-container{
+	width: 400px;
+	height: 530px;
+	background-color: #FFF;
+	border-radius: 10px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	box-shadow: 0px 1px 10px 1px #000;
+	overflow: hidden;
+	display: inline-block;
 }
-.page
-{
-	width: 100%;
-	height: 100%;
+
+.up-container{
+	height: 150px;
+	background: #00BDFF;
 }
-.container
-{
-	display: flex;
-	flex-direction: column;
-	width: 300px;
-	height: 400px;
-	background-color: white;
-	color: black;
+
+.img-container{
+	background: black;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+	padding: 4px;
+	transform: translate(150px,90px);
 }
-.top
-{
-	display: flex;
-	justify-content: center;
+
+.img-container img{
+	background: white;
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
 }
-.bot
-{
-	display: flex;
-	justify-content: center;
-}
-.titre
-{
+
+.low-container{
+	height: 380px;
+	background: #f1f1f1;
+	padding: 20px;
+	padding-top: 40px;
 	text-align: center;
 }
-.Content
-{
-	width: 100%;
-	display: flex;
-}
-.titre
-{
-	text-decoration: none;
-	font-size: 30px;
-}
-.sousTitre
-{
-	color: grey;
-}
-.imageTheme
-{
-	width: 50px;
-	height: 100%;
-	margin-right: 20px;
 
+.low-container h3, h4{
+	box-sizing: border-box;
+	line-height: .6;
+	font-weight: lighter;
 }
-a
-{
-	text-decoration:none;
-	color: black;
+
+.low-container h4{
+	color: #7F00FF;
+	opacity: .6;
+	font-weight: bold;
 }
-.box
-{
-	display: flex;
+
+.low-container p{
+	font-size: 16px;
+	color: gray;
+	margin-bottom: 30px;
 }
-.box:hover
-{
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+
+.low-container .btn{
+	padding: 12px 20px;
+	background: #005378;
+	border: none;
+	color: white;
+	border-radius: 30px;
+	font-size: 12px;
+	text-decoration: none;
+	font-weight: bold;
 }
-.containerPage
-{
-	display: flex;
-	justify-content: center;
+
+.low-container .btn:hover{
+	background: transparent;
+	color: #005378;
+	border: 2px solid #005378;
 }
-.nav
+
+.btn2{
+	margin-top: 30px;
+}
+
+.btn3{
+	margin-top: 30px;
+}
+h3
 {
-	background-color: white;
-	width: 100%;
-	height: 40px;
-	display: flex;
-	justify-content: space-around;
+	font-family: 'Montserrat',sans-serif;
+	font-size: 22px;
 }

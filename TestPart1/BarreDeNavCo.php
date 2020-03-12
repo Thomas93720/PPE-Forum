@@ -19,7 +19,4 @@
 	</form>
 	<a href="AjoutFilDeDiscussion.php"><i class="fas fa-plus"></i> Ajouter un topic</a>
 	<a href="deco.php"><i class="fas fa-share-square"></i> Se deconnecter</i></a>
-	<form method="GET">
-		<input type="submit" name="dark" value="dark">
-	</form>
 </div>

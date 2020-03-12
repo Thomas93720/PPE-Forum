@@ -65,7 +65,14 @@
 									echo '<div class="Content">';
 										echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 										echo '<div>';
-											echo '<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
+											$fdd = new FilDeDiscussion();
+											$fdd->getIdFilDeDiscussionWithId($fildediscussion->getIdFilDeDiscussion());
+											echo '<div class="titre">';
+											if ($fdd->getIsFilDeDiscussionClos()) 
+											{
+												echo "[Résolu] ";
+											}
+											echo $fildediscussion->getTitreFilDeDiscussion().'</div>';
 											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
@@ -117,6 +124,7 @@
 			</SELECT>
 			<input type="submit" name="trier">
 		</FORM>
+
 		<div class="page">
 		<div class="contentPage">
 			<div class="milieu">
@@ -151,7 +159,14 @@
 									echo '<div class="Content">';
 										echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 										echo '<div>';
-											echo '<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
+											$fdd = new FilDeDiscussion();
+											$fdd->getIdFilDeDiscussionWithId($fildediscussion->getIdFilDeDiscussion());
+											echo '<div class="titre">';
+											if ($fdd->getIsFilDeDiscussionClos()) 
+											{
+												echo "[Résolu] ";
+											}
+											echo $fildediscussion->getTitreFilDeDiscussion().'</div>';
 											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>

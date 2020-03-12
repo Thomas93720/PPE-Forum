@@ -60,7 +60,7 @@
 				} 
 				echo $fildediscussion->getTitreFilDeDiscussion().'</h1>';
 				$msg = fildediscussionManager::findAllMessage($id);
-				echo '<p>Crée par : '.$createur->getNomCompte().'</p>';
+				echo '<p>Crée par : <a style="color: white; text-decoration: none;" href="profil.php?idProfil='.$fildediscussion->getIdCreateur().'">'.$createur->getNomCompte().'</a></p>';
 				echo '<p>le : '.$fildediscussion->getDateCreation().'</p>';
 				echo '<p>'.sizeof($msg)." message(s)".'</p>';
 				echo '<hr>';
@@ -77,10 +77,12 @@
 					        <?php
 						        if ($utilisateur->getIsCompteAdmin())
 						        {
+
 									echo '
 									<form method="POST">
 										<div>
-											<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>';
+											<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>
+											<button name = "modif" value="'.$linemsg->getIdMessage().'"><i class="fas fa-pen"></i> Modifier</button>';
 											if ($utilisateur->getIdCompte()!=$user->getIdCompte()) 
 											{
 												echo '<a href="bantemp.php?idCompte='.$linemsg->getIdAuteur().'"><i class="fas fa-user-times"></i> bannir temporairement</a>';
@@ -91,9 +93,11 @@
 								}
 								elseif ($utilisateur->getIdCompte()==$user->getIdCompte()) 
 								{
+
 									echo '<form method="POST">
 											<div>
 												<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>
+												<button name = "modif" value="'.$linemsg->getIdMessage().'"> Modifier</button>
 											</div>
 										</form>';
 								}
@@ -104,7 +108,7 @@
 				        	<p><?php echo $linemsg->getLibelle(); ?></p>
 				        	<div class="leftBouton">
 					        	<div class="bouton">
-				        			<button type="button"><i class="fa fa-thumbs-up"></i> Merci</button> 
+				        			<button type="button"><i class="fa fa-thumbs-up"></i> Utile</button> 
 				        			<button type="button"><i class="fas fa-thumbs-down"></i> Inutile</button> 
 				        		</div>
 				        	</div>
@@ -156,7 +160,7 @@
 				} 
 				echo $fildediscussion->getTitreFilDeDiscussion().'</h1>';
 				$msg = fildediscussionManager::findAllMessage($id);
-				echo '<p>Crée par : '.$createur->getNomCompte().'</p>';
+				echo '<p>Crée par : <a style="color: white; text-decoration: none;" href="profil.php?idProfil='.$fildediscussion->getIdCreateur().'">'.$createur->getNomCompte().'</a></p>';
 				echo '<p>le : '.$fildediscussion->getDateCreation().'</p>';
 				echo '<p>'.sizeof($msg)." message(s)".'</p>';
 				echo '<hr>';
@@ -169,7 +173,7 @@
 			    	<div class="messages"><br>
 			  			<div class="topMsg">
 					        <img src="https://www.shareicon.net/data/2016/09/01/822739_user_512x512.png" alt="Avatar" class="avatar">
-					        <div class="titreNomCompte"><h4><?php $utilisateur->initCompte($linemsg->getIdAuteur()); echo ' '.$utilisateur->getNomCompte(); ?></h4></div><br>
+					        <div class="titreNomCompte"><a style="color: black; text-decoration: none;"<?php echo 'href="profil.php?idProfil='.$linemsg->getIdAuteur().'"'?><h4><?php $utilisateur->initCompte($linemsg->getIdAuteur()); echo ' '.$utilisateur->getNomCompte(); ?></h4></a></div><br>
 					    </div>
 				        <hr>
 				        <div = class="contentMsg">
@@ -177,7 +181,7 @@
 				        	<div class="leftBouton">
 					        	<div class="bouton">
 					        		<?php //echo $linemsg->get ?>
-				        			<button type="button"><i class="fa fa-thumbs-up"></i> Merci</button> 
+				        			<button type="button"><i class="fa fa-thumbs-up"></i> Utile</button> 
 				        			<button type="button"><i class="fas fa-thumbs-down"></i> Inutile</button> 
 				        		</div>
 				        	</div>

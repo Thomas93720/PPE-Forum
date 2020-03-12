@@ -20,9 +20,9 @@ if(!empty($_POST['avatar']))
 { 
 	echo $_POST["avatar"];
 	echo '<br>';
-    var_dump(move_uploaded_file($_POST["avatar"], "/Applications/MAMP/htdocs/TestPart1/image/pp/"));
+    var_dump(move_uploaded_file($_POST["avatar"], "image/pp/"));
     echo '<br>';
-    if(is_dir('/Applications/MAMP/htdocs/TestPart1/image/pp/')) 
+    if(is_dir('image/pp/')) 
     {
     echo 'Le dossier existe';
 	} else 
