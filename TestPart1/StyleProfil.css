@@ -36,12 +36,17 @@ body{
 }
 
 .img-container img{
+	transition: .5s;
 	background: white;
 	width: 90px;
 	height: 90px;
 	border-radius: 50%;
 }
 
+.img-container img:hover{
+	transition: .7s;
+	opacity: .5;
+}
 .low-container{
 	height: 380px;
 	background: #f1f1f1;
