@@ -80,7 +80,7 @@
           $isvalide = CompteManager::VerifNewId($_POST["nameReg"]);
           if ($isvalide==false) 
           {
-            echo 'Identifiants invalide';
+            echo '<h2>Identifiants invalide</h2>';
           }
           else
           {
@@ -90,9 +90,11 @@
             $compte->setNomCompte($_POST["nameReg"]);
             $compte->setLogin($_POST["login"]);
             compteManager::CreateNewCompte($compte);
+            
             session_start();
             $_SESSION["idUser"] = compteManager::getIdCompteRegister($compte);
-            header('Location: index.php');
+            
+            header('Location: testemail.php');
             exit();
           }
       }  

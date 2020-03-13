@@ -105,5 +105,27 @@
             }
         }
         
+        public static function RechercheBarre($recherche)
+        {
+            $demande = "%".$recherche."%";
+            $tab= array();
+            $connex=DatabaseLinker::getConnexion();
+            $state=$connex->prepare('SELECT * FROM FilDeDiscussion WHERE titreFilDeDiscussion LIKE ?');
+            $state->bindParam(1,$demande);
+            $state->execute();
+            $result = $state->fetchALL();
+            foreach ($result as $ligneResult) 
+            {
+                $user = new FilDeDiscussion();
+                $user->setIdFilDeDiscussion($ligneResult["idFilDeDiscussion"]);
+                $user->setDateCreation($ligneResult["dateOuverture"]);
+                $user->setTitreFilDeDiscussion($ligneResult["titreFilDeDiscussion"]);
+                $user->setThemeFilDeDiscussion($ligneResult["Theme"]);
+                $user->setIsFilDeDiscussionClos($ligneResult["isFilDeDiscussionClos"]);
+                $tab[] = $user;
+            }
+            return $tab;
+        }
+        
     }
 ?>
