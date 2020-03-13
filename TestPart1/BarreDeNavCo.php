@@ -17,13 +17,5 @@
 	</form>
 	<a href="AjoutFilDeDiscussion.php"><i class="fas fa-plus"></i> Ajouter un topic</a>
 	<a href="deco.php"><i class="fas fa-share-square"></i> Se deconnecter</a>
-        <?php
-            if(isset($_POST["recherche"])) 
-            {
-              if(!empty($_POST["q"]))  
-              {     
-                $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
-              }
-            }
-        ?>
+        
 </div>

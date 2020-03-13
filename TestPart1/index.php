@@ -50,6 +50,15 @@
 		        	}
 		        }
 					$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
+
+                                        if(isset($_POST["recherche"])) 
+                                        {
+                                          if(!empty($_POST["q"]))  
+                                          {     
+                                            $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
+                                          }
+                                        }
+
 					$taille = sizeof($tabFilDeDiscussion)/6;
 					//$reste = fmod(sizeof($tabFilDeDiscussion),6);
 					if (sizeof($tabFilDeDiscussion)==0) 
@@ -145,6 +154,15 @@
 		        	}
 		        }
 					$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
+     
+                                        if(isset($_POST["recherche"])) 
+                                        {
+                                          if(!empty($_POST["q"]))  
+                                          {     
+                                            $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
+                                          }
+                                        }
+
 					$taille = sizeof($tabFilDeDiscussion)/6;
 					$reste = fmod(sizeof($tabFilDeDiscussion),6);
 					if (empty($_GET["pages"])|| $_GET["pages"]=="1")
