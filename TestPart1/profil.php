@@ -14,7 +14,7 @@
 	    <title>Forum</title>
 	</head>
 <body>
-<?php
+<?php 
 	if(isset($_SESSION["idUser"])&&$_SESSION["idUser"]==$_GET["idProfil"])
 	{
 		$utilisateur = new Compte();
@@ -24,7 +24,7 @@
 		<div class="card-container">
 		<div class="up-container">
 			<div class="img-container">
-				<img src="image/pp/user.png">
+				<a href="Avatar.php"><img src="image/pp/user.png"></a>
 			</div>
 		</div>
 		<div class="low-container">
