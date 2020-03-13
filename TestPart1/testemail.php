@@ -4,11 +4,13 @@
     include("data/fildediscussion.php");
     include("datamanagers/compteManager.php");
     include("data/message.php");
-    include("PHPMailer-master/src/PHPMailer.php");
-    include("PHPMailer-master/src/SMTP.php");
-    include("PHPMailer-master/src/Exception.php");
+    require_once("PHPMailer-master/src/PHPMailer.php");
+    require_once("PHPMailer-master/src/SMTP.php");
+    require_once("PHPMailer-master/src/Exception.php");
+    
     
     session_start();
+    
     
     echo $_SESSION["idUser"];
     $compte = compteManager::getCompteWithId($_SESSION["idUser"]);
@@ -17,26 +19,13 @@
  
     error_reporting( E_ALL ); 
             
-    $from = "Auros1805@gmail.com";
- 
-    $to = $compte->getEmail();
- 
-    $subject = 'certification du compte';
- 
-    $message = "Un compte avec cette adresse email ";
- 
-    $headers = "From:" . $from;
- 
-    mail($to,$subject,$message, $headers);
- 
-    echo "L'email a été envoyé.";
-    
+    use PHPMailer\PHPMailer\PHPMailer;
     $mail = new PHPMailer(TRUE);
 
     /* Open the try/catch block. */
     try {
        /* Set the mail sender. */
-       $mail->setFrom('email.sever@gmail.com', 'Serveur');
+       $mail->setFrom('emailsever@gmail.com', 'Serveur');
 
        /* Add a recipient. */
        $mail->addAddress($compte->getEmail());
@@ -62,5 +51,3 @@
     }
 
 ?>
-
-
