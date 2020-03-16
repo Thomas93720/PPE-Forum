@@ -14,7 +14,7 @@
 <h1>Modifier mes informations</h1>
 <a href="#">Changer mon image</a>
 <h2>Changer de mot de passe</h2>
-<form>
+<form method="POST">
 	<br>
 	<label>Votre ancien mot de passe : </label>
 	<input type="password" name="mdp">
@@ -31,11 +31,11 @@
 	<input type="submit" name="valider">
 </form>
 <h2>Changer votre email</h2>
-<form>
+<form method="POST">
 	<label>Votre ancienne email : </label>
-	<input type="text" name="mail">
+	<input type="email" name="email">
 	<?php
-	if (!empty($_POST["mail"])) 
+	if (!empty($_POST["email"])) 
 	{
 		?>
 		<br><br>
@@ -47,7 +47,7 @@
 	<input type="submit" name="valider">
 </form>
 <h2>Changer votre pseudo</h2>
-<form>
+<form method="POST">
 	<label>Votre ancien pseudo</label>
 	<input type="text" name="pseudo">
 	<?php
@@ -60,7 +60,7 @@
 	}
 	?>
 	<input type="submit" name="valider">
-</form>
+</form method="POST">
 <br>
 <h2>Biographie</h2>
 <form>
