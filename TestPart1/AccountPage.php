@@ -14,7 +14,7 @@
 <h1>Modifier mes informations</h1>
 <a href="#">Changer mon image</a>
 <h2>Changer de mot de passe</h2>
-<form method="POST">
+<form>
 	<br>
 	<label>Votre ancien mot de passe : </label>
 	<input type="password" name="mdp">
@@ -28,9 +28,12 @@
 		<?php
 	}
 	?>
-	<h2>Changer votre email</h2>
+	<input type="submit" name="valider">
+</form>
+<h2>Changer votre email</h2>
+<form>
 	<label>Votre ancienne email : </label>
-	<input type="email" name="mail">
+	<input type="text" name="mail">
 	<?php
 	if (!empty($_POST["mail"])) 
 	{
@@ -41,10 +44,12 @@
 		<?php
 	}
 	?>
-	<h2>Changer votre pseudo</h2>
-	<label>Votre ancien pseudo : </label>
+	<input type="submit" name="valider">
+</form>
+<h2>Changer votre pseudo</h2>
+<form>
+	<label>Votre ancien pseudo</label>
 	<input type="text" name="pseudo">
-	<br><br>
 	<?php
 	if (!empty($_POST["pseudo"])) 
 	{
@@ -54,20 +59,10 @@
 		<?php
 	}
 	?>
-	<h2>Changer votre login</h2>
-	<label>Votre ancien login : </label>
-	<input type="text" name="login">
-	<?php
-	if (!empty($_POST["login"])) {
-		?>
-		<br><br>
-		<label>Votre nouveau login : </label>
-		<input type="text" name="newLogin">
-		<?php
-	}
-	?>
-	<h2>Biographie</h2>
-	<textarea></textarea>
-	<br>
 	<input type="submit" name="valider">
+</form>
+<br>
+<h2>Biographie</h2>
+<form>
+	<textarea></textarea>
 </form>
