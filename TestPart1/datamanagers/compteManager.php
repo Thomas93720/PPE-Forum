@@ -57,7 +57,17 @@
                 $this->dateDebutBan = $ligneResultat["dateDebutBan"];
                 $this->dateFinBan = $ligneResultat["dateFinBan"];
                 $this->motDePasse = $ligneResultat["motDePasse"];
+                $this->cheminPhoto = $ligneResultat["cheminPhoto"];
+                $this->biographie = $ligneResultat["biographie"];
             }
+        }
+        public static function cheminPhoto($idCompte,$cheminPhoto)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("UPDATE Compte SET cheminPhoto = ? WHERE idCompte = ?");
+            $state->bindParam(1,$cheminPhoto);
+            $state->bindParam(2,$idCompte);
+            $state->execute();
         }
         public static function isCompteBan($idCompte)
         {
@@ -96,6 +106,7 @@
                 $user->setDateCreation($ligneResultat["dateCreation"]);
                 $user->setLogin($ligneResultat["login"]);
                 $user->setMotDePasse($ligneResultat["motDePasse"]);
+                $user->setBiographie($ligneResultat["biographie"]);
                 return $user;
             }
             return null;
@@ -117,6 +128,7 @@
                 $findFilDeDiscussion->setIdMessage($ligneResult["idMessage"]);
                 $findFilDeDiscussion->setDateDebutBan($ligneResult["dateDebutBan"]);
                 $findFilDeDiscussion->setDateFinBan($ligneResult["dateFinBan"]);
+                $findFilDeDiscussion->setBiographie($ligneResultat["biographie"]);
                 $tab[] = $findFilDeDiscussion;
             }
             return $tab;
@@ -174,6 +186,7 @@
                 $compte->setDateDebutBan($ligneResultat["dateDebutBan"]);
                 $compte->setDateFinBan($ligneResultat["dateFinBan"]);
                 $compte->setMotDePasse($ligneResultat["motDePasse"]);
+                $compte->setBiographie($ligneResultat["biographie"]);
             }
             return $compte;
         }

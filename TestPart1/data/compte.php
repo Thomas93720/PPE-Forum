@@ -14,14 +14,28 @@
         private $connexion;
         private $email;
         private $raisonBan;
+        private $cheminPhoto;
+        private $biographie;
         
 
         function getEmail() {
             return $this->email;
         }
 
+        function getBiographie() {
+            return $this->biographie;
+        }
+
+        function setBiographie($biographie) {
+            $this->biographie = $biographie;
+        }
+
         function setEmail($email) {
             $this->email = $email;
+        }
+
+        function getCheminPhoto() {
+            return $this->cheminPhoto;
         }
 
         function getIdCompte() {
@@ -74,6 +88,10 @@
 
         function setIdCompte($idCompte) {
             $this->idCompte = $idCompte;
+        }
+
+        function setCheminPhoto($cheminPhoto) {
+            $this->cheminPhoto = $cheminPhoto;
         }
 
         function setIsCompteBanni($isCompteBanni) {
@@ -143,6 +161,8 @@
                 $this->isCompteBanni = $ligneResultat["isCompteBanni"];
                 $this->isCompteAdmin = $ligneResultat["isCompteAdmin"];
                 $this->raisonBan = $ligneResultat["raisonBan"];
+                $this->cheminPhoto = $ligneResultat["cheminPhoto"];
+                $this->biographie = $ligneResultat["biographie"];
             }
         }
         public static function identification($mdp,$login)
@@ -162,31 +182,13 @@
                 $user->setDateCreation($ligneResultat["dateCreation"]);
                 $user->setLogin($ligneResultat["login"]);
                 $user->setMotDePasse($ligneResultat["motDePasse"]);
+                $user->setCheminPhoto($ligneResultat["cheminPhoto"]);
+                $user->setBiographie($ligneResultat["biographie"]);
                 return $user;
             }
             return null;
         }
-        public static function findFilDeDiscussion($typeTri)
-        {
-            $tab= array();
-            $connex=DatabaseLinker::getConnexion();
-            $state=$connex->prepare("SELECT * FROM Compte");
-            $state->execute();
-            $result = $state->fetchALL();
-            foreach ($result as $ligneResult) 
-            {
-                $findFilDeDiscussion = new Timbre();
-                $findFilDeDiscussion->setIdCompte($ligneResult["idCompte"]);
-                $findFilDeDiscussion->setNomCompte($ligneResult["titre"]);
-                $findFilDeDiscussion->setMotDePasse($ligneResult["motDePasse"]);
-                $findFilDeDiscussion->setDateCreation($ligneResult["dateCreation"]);
-                $findFilDeDiscussion->setIdMessage($ligneResult["idMessage"]);
-                $findFilDeDiscussion->setDateDebutBan($ligneResult["dateDebutBan"]);
-                $findFilDeDiscussion->setDateFinBan($ligneResult["dateFinBan"]);
-                $tab[] = $findFilDeDiscussion;
-            }
-            return $tab;
-        }
+        
     }
     
     

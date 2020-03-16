@@ -10,6 +10,23 @@
             $state->execute();
         }
 
+        public static function cloreFil($idFilDeDiscussion)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("UPDATE FilDeDiscussion SET isFilDeDiscussionClos = 1 WHERE idFilDeDiscussion = ?");
+            $state->bindParam(1,$idFilDeDiscussion);
+            $state->execute();
+        }
+
+        public static function gelLastIdFilDeDiscussion()
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("SELECT * FROM FilDeDiscussion");
+            $state->execute();
+            $rows = $state->rowCount(); 
+            return $rows+1;
+        }
+
         public static function getFilDeDiscussionWithId($idFilDeDiscussion)
         {
             $fil = new fildediscussion();
@@ -89,8 +106,6 @@
             
             $bdd = DatabaseLinker::getConnexion();
             $state = $bdd->prepare("INSERT INTO FilDeDiscussion(titreFilDeDiscussion,dateOuverture,Theme,idCreateur) Values (?,CURDATE(),?,?)");
-
-
             $state->bindParam(1, $titreFilDeDiscussion);
             $state->bindParam(2, $Theme);
             $state->bindParam(3,$idCreateur);
@@ -104,7 +119,6 @@
                 $this->idCreateur = $lineResultat["idCreateur"];
             }
         }
-        
         public static function RechercheBarre($recherche)
         {
             $demande = "%".$recherche."%";

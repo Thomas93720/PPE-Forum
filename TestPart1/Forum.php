@@ -72,8 +72,18 @@
 			    	?>
 			    	<div class="messages"><br>
 			  			<div class="topMsg">
-					        <img src="https://www.shareicon.net/data/2016/09/01/822739_user_512x512.png" alt="Avatar" class="avatar">
-					        <div class="titreNomCompte"><a style="color: black; text-decoration: none;"<?php echo 'href="profil.php?idProfil='.$linemsg->getIdAuteur().'"'?><h4><?php $user->initCompte($linemsg->getIdAuteur()); echo ' '.$user->getNomCompte(); ?></h4></a></div><br>
+					        <?php 
+					        $user->initCompte($linemsg->getIdAuteur());
+			  				if ($user->getCheminPhoto()==NULL)
+			  				{
+			  					echo '<img src="image/pp/user.png" alt="Avatar" class="avatar">';
+			  				}
+					        else
+					        {
+					        	echo '<img src="'.$user->getCheminPhoto().'"alt="Avatar" class="avatar">';
+					        }
+					        ?>
+					        <div class="titreNomCompte"><a style="color: black; text-decoration: none;"<?php echo 'href="profil.php?idProfil='.$linemsg->getIdAuteur().'"'?><h4><?php echo ' '.$user->getNomCompte(); ?></h4></a></div><br>
 					        <?php
 						        if ($utilisateur->getIsCompteAdmin())
 						        {
@@ -81,12 +91,16 @@
 									echo '
 									<form method="POST">
 										<div>
-											<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>
-											<button name = "modif" value="'.$linemsg->getIdMessage().'"><i class="fas fa-pen"></i> Modifier</button>';
+											<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>';
 											if ($utilisateur->getIdCompte()!=$user->getIdCompte()) 
 											{
 												echo '<a href="bantemp.php?idCompte='.$linemsg->getIdAuteur().'"><i class="fas fa-user-times"></i> bannir temporairement</a>';
 												echo '<button name ="bandef" value = "'.$linemsg->getIdAuteur().'"><i class="fas fa-user-slash"></i> bannir def</button>';
+											}
+											else
+											{
+												echo 
+												'<button name = "modif" value="'.$linemsg->getIdMessage().'"><i class="fas fa-pen"></i> Modifier</button>';
 											}
 										echo '</div>
 									</form>';
@@ -172,8 +186,18 @@
 			    	?>
 			    	<div class="messages"><br>
 			  			<div class="topMsg">
-					        <img src="https://www.shareicon.net/data/2016/09/01/822739_user_512x512.png" alt="Avatar" class="avatar">
-					        <div class="titreNomCompte"><a style="color: black; text-decoration: none;"<?php echo 'href="profil.php?idProfil='.$linemsg->getIdAuteur().'"'?><h4><?php $utilisateur->initCompte($linemsg->getIdAuteur()); echo ' '.$utilisateur->getNomCompte(); ?></h4></a></div><br>
+					        <?php 
+					        $utilisateur->initCompte($linemsg->getIdAuteur());
+			  				if ($utilisateur->getCheminPhoto()==NULL)
+			  				{
+			  					echo '<img src="image/pp/user.png" alt="Avatar" class="avatar">';
+			  				}
+					        else
+					        {
+					        	echo '<img src="'.$utilisateur->getCheminPhoto().'"alt="Avatar" class="avatar">';
+					        }
+					        ?>
+					        <div class="titreNomCompte"><a style="color: black; text-decoration: none;"<?php echo 'href="profil.php?idProfil='.$linemsg->getIdAuteur().'"'?><h4><?php echo ' '.$utilisateur->getNomCompte(); ?></h4></a></div><br>
 					    </div>
 				        <hr>
 				        <div = class="contentMsg">

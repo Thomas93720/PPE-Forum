@@ -18,7 +18,7 @@
 		}
 		if (!empty($_POST["clore"])) 
 		{
-			
+			fildediscussionManager::cloreFil($_POST["clore"]);
 		}
 		?>
 		<FORM method="GET" class="formTri">
@@ -50,21 +50,20 @@
 		        	}
 		        }
 					$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
-
-                                        if(isset($_POST["recherche"])) 
-                                        {
-                                          if(!empty($_POST["q"]))  
-                                          {     
-                                            $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
-                                          }
-                                        }
-
 					$taille = sizeof($tabFilDeDiscussion)/6;
+					 	if(isset($_POST["recherche"])) 
+	                    {
+	                      if(!empty($_POST["q"]))  
+	                      {     
+	                        $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
+	                      }
+	                    }
+
 					//$reste = fmod(sizeof($tabFilDeDiscussion),6);
 					if (sizeof($tabFilDeDiscussion)==0) 
 					{
 						echo "<h1>Il n'y a plus aucun fils de discussion actuellement !</h1>";
-						echo '<a href = ""><h2>Créez-en un des maintenant</h2>';
+						echo '<a href = "AjoutFilDeDiscussion.php"><h2>Créez-en un des maintenant</h2>';
 					}
 						foreach ($tabFilDeDiscussion as $fildediscussion)
 			            { 
@@ -82,7 +81,7 @@
 												echo "[Résolu] ";
 											}
 											echo $fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> Date Ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
@@ -92,7 +91,7 @@
 								?>
 								<form method="POST">
 									<button name="delete" <?php echo 'value="'.$fildediscussion->getIdFilDeDiscussion().'"'?>><i class="fas fa-trash-alt"></i> Supprimer</button>
-									<button name="clore"><i class="far fa-window-close"></i> Clore</button>
+									<button name="clore"  <?php echo 'value="'.$fildediscussion->getIdFilDeDiscussion().'"'?>><i class="far fa-window-close"></i> Clore</button>
 								</form>
 								<?php
 							}
@@ -154,15 +153,13 @@
 		        	}
 		        }
 					$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
-     
-                                        if(isset($_POST["recherche"])) 
-                                        {
-                                          if(!empty($_POST["q"]))  
-                                          {     
-                                            $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
-                                          }
-                                        }
-
+					if(isset($_POST["recherche"])) 
+                    {
+                      if(!empty($_POST["q"]))  
+                      {     
+                        $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
+                      }
+                    }
 					$taille = sizeof($tabFilDeDiscussion)/6;
 					$reste = fmod(sizeof($tabFilDeDiscussion),6);
 					if (empty($_GET["pages"])|| $_GET["pages"]=="1")
@@ -185,7 +182,7 @@
 												echo "[Résolu] ";
 											}
 											echo $fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> Date Ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
@@ -211,7 +208,7 @@
 												echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
 												echo '<div>';
 													echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-													echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> Date Ouverture : '.$fildediscussion->getDateCreation().'</div>';
+													echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
 												echo '</div>
 											</div>
 										</div>

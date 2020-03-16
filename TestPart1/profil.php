@@ -14,7 +14,7 @@
 	    <title>Forum</title>
 	</head>
 <body>
-<?php 
+<?php
 	if(isset($_SESSION["idUser"])&&$_SESSION["idUser"]==$_GET["idProfil"])
 	{
 		$utilisateur = new Compte();
@@ -24,7 +24,19 @@
 		<div class="card-container">
 		<div class="up-container">
 			<div class="img-container">
-				<a href="Avatar.php"><img src="image/pp/user.png"></a>
+				<?php
+				$utilisateur->initCompte($_GET["idProfil"]);
+				echo '<a class = "profilLink" href="Avatar.php">';
+  				if ($utilisateur->getCheminPhoto()==NULL)
+  				{
+  					echo '<img src="image/pp/user.png" alt="Avatar" class="avatar">';
+  				}
+		        else
+		        {
+		        	echo '<img src="'.$utilisateur->getCheminPhoto().'"alt="Avatar" class="avatar">';
+		        }
+		        ?>
+		    </a>
 			</div>
 		</div>
 		<div class="low-container">
@@ -43,10 +55,19 @@
 				echo '<i class="fas fa-birthday-cake"></i> '.$utilisateur->getDateCreation();
 				?>
 				<div>
-					<p>Pas de bio pour l'instant...</p>
+					<?php
+					if ($utilisateur->getBiographie()) 
+					{
+						echo '<p>'.$utilisateur->getBiographie().'<p>';
+					}
+					else
+					{
+						echo "<p>Pas de bio pour l'instant...</p>";
+					}
+					?>
 				</div>
 				<div>
-					<a href="#" class="btn">Modifier mes informations</a>
+					<a href="AccountPage.php" class="btn">Modifier mes informations</a>
 				</div>
 				<div class="btn2">
 					<a href="#" class="btn">Topics de l'utilisateur</a>
@@ -68,7 +89,17 @@
 		<div class="card-container">
 		<div class="up-container">
 			<div class="img-container">
-				<img src="image/pp/user.png">
+				<?php
+				$utilisateur->initCompte($_GET["idProfil"]);
+  				if ($utilisateur->getCheminPhoto()==NULL)
+  				{
+  					echo '<img src="image/pp/user.png" alt="Avatar" class="avatar">';
+  				}
+		        else
+		        {
+		        	echo '<img src="'.$utilisateur->getCheminPhoto().'"alt="Avatar" class="avatar">';
+		        }
+		        ?>
 			</div>
 		</div>
 		<div class="low-container">
@@ -90,7 +121,17 @@
 				echo '<i class="fas fa-birthday-cake"></i> '.$utilisateur->getDateCreation();
 				?>
 				<div>
-					<p>Pas de bio pour l'instant...</p>
+					<?php
+					if ($utilisateur->getBiographie()) 
+					{
+						echo '<p>'.$utilisateur->getBiographie().'<p>';
+					}
+					else
+					{
+						echo "<p>Pas de bio pour l'instant...</p>";
+					}
+					?>
+					
 				</div>
 				<div class="btn2">
 					<a href="#" class="btn">Topics de l'utilisateur</a>
