@@ -3,7 +3,7 @@
 	include("datamanagers/DatabaseLinker.php");
 	include("datamanagers/fildediscussionManager.php");
 	include("datamanagers/compteManager.php");
-	include("data/message.php");
+	include("datamanagers/messageManager.php");
 ?>
 <?php
 	session_start();
@@ -15,6 +15,7 @@
 		if (!empty($_POST["delete"])) 
 		{
 			fildediscussionManager::deleteFilDeDiscussion($_POST["delete"]);
+			messageManager::deleteMessageFromFilDeDiscussion($_POST["delete"]);
 		}
 		if (!empty($_POST["clore"])) 
 		{
@@ -60,10 +61,14 @@
 	                    }
 
 					//$reste = fmod(sizeof($tabFilDeDiscussion),6);
-					if (sizeof($tabFilDeDiscussion)==0) 
+					if (sizeof($tabFilDeDiscussion)==0&&empty($_POST["q"])) 
 					{
 						echo "<h1>Il n'y a plus aucun fils de discussion actuellement !</h1>";
 						echo '<a href = "AjoutFilDeDiscussion.php"><h2>Créez-en un des maintenant</h2>';
+					}
+					else if(sizeof($tabFilDeDiscussion)==0&&!empty($_POST["q"]))
+					{
+						echo "<h1>Aucun fil de discussion contenant : ".$_POST["q"]." n'as été trouvé </h1>";
 					}
 						foreach ($tabFilDeDiscussion as $fildediscussion)
 			            { 
@@ -153,22 +158,28 @@
 		        	}
 		        }
 					$tabFilDeDiscussion = FilDeDiscussion::getAllFilDeDiscussion($typeTriFilDeDiscussion);
-					if(isset($_POST["recherche"])) 
+     
+                    if(isset($_POST["recherche"])) 
                     {
                       if(!empty($_POST["q"]))  
                       {     
                         $tabFilDeDiscussion = fildediscussionManager::RechercheBarre($_POST["q"]);
                       }
                     }
+
 					$taille = sizeof($tabFilDeDiscussion)/6;
 					$reste = fmod(sizeof($tabFilDeDiscussion),6);
-					if (empty($_GET["pages"])|| $_GET["pages"]=="1")
+					if (sizeof($tabFilDeDiscussion)==0&&empty($_POST["q"])) 
 					{
-						for ($i=1; $i < 12; $i++) 
+						echo "<h1>Il n'y a plus aucun fils de discussion actuellement !</h1>";
+					}
+					else if(sizeof($tabFilDeDiscussion)==0&&!empty($_POST["q"]))
+					{
+						echo "<h1>Aucun fil de discussion contenant : ".$_POST["q"]." n'as été trouvé </h1>";
+					}
+						foreach ($tabFilDeDiscussion as $fildediscussion)
 			            { 
-							$fildediscussion = new FilDeDiscussion();
-							$fildediscussion->getIdFilDeDiscussionWithId($tabFilDeDiscussion[$i]->getIdFilDeDiscussion());
-							$createur = FilDeDiscussion::getCreateurWithId($tabFilDeDiscussion[$i]->getIdFilDeDiscussion());
+		            		$createur = FilDeDiscussion::getCreateurWithId($fildediscussion->getIdFilDeDiscussion());
 					        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 								echo '<div class="box">';
 									echo '<div class="Content">';
@@ -182,43 +193,13 @@
 												echo "[Résolu] ";
 											}
 											echo $fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> Date Ouverture : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
 							</a>';
-							echo '<hr>';
-						}
 					}
-					$cpt=12;
-					if (!empty($_GET["pages"])) 
-					{
-						if ($_GET["pages"]=="2") 
-						{
-							for ($i=$cpt; $i < $cpt+12; $i++) 
-				            { 
-								$fildediscussion = new FilDeDiscussion();
-								$fildediscussion->getIdFilDeDiscussionWithId($i);
-								$createur = FilDeDiscussion::getCreateurWithId($i);
-								if (!empty($fildediscussion->getIdFilDeDiscussion())) 
-								{
-									echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
-										echo '<div class="box">';
-											echo '<div class="Content">';
-												echo '<img class="imageTheme" src="image/Theme/'.$fildediscussion->getThemeFilDeDiscussion().'.png">';
-												echo '<div>';
-													echo'<div class="titre">'.$fildediscussion->getTitreFilDeDiscussion().'</div>';
-													echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
-												echo '</div>
-											</div>
-										</div>
-									</a>';
-								}
-						        
-							}
-						}
-					}
-		            
+					 
 					$nbpages = $taille;
 						
 					?>

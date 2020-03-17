@@ -11,7 +11,7 @@
 		<html>
 		<head>
 			<title>Créer un nouveau fil de discussion</title>
-			<link rel="stylesheet" type="text/css" href="styleAddTopic.css">
+			<link rel="stylesheet" type="text/css" href="Style/styleAddTopic.css">
 			<link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js" />
 			<script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script> 
 			<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">

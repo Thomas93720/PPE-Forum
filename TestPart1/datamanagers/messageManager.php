@@ -37,6 +37,14 @@
             }
             return $tab;
         }
+        public static function deleteMessageFromFilDeDiscussion($idFilDeDiscussion)
+        {
+            
+            $connex=DatabaseLinker::getConnexion();
+            $state=$connex->prepare("DELETE FROM Message WHERE idFilDeDiscussion = ?");
+            $state->bindParam(1,$idFilDeDiscussion);
+            $state->execute();
+        }
         public static function insertMessage($message)
         {
             $content = $message->getLibelle();

@@ -21,10 +21,14 @@
         public static function gelLastIdFilDeDiscussion()
         {
             $bdd=DatabaseLinker::getConnexion();
-            $state = $bdd->prepare("SELECT * FROM FilDeDiscussion");
+            $state = $bdd->prepare("SELECT * FROM FilDeDiscussion ORDER BY idFilDeDiscussion DESC LIMIT 1");
             $state->execute();
-            $rows = $state->rowCount(); 
-            return $rows+1;
+            $resultat = $state->fetchAll();
+            foreach ($resultat as $lineResultat) 
+            {
+                $t = $lineResultat["idFilDeDiscussion"];
+            }
+            return $t;
         }
 
         public static function getFilDeDiscussionWithId($idFilDeDiscussion)

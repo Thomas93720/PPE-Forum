@@ -8,7 +8,7 @@
 <html>
 	<head>
 	    <meta charset="utf-8" />
-	    <link rel="Stylesheet" type="text/css" href="StyleProfil.css" media="all"/>
+	    <link rel="Stylesheet" type="text/css" href="Style/StyleProfil.css" media="all"/>
 	    <script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
 	    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 	    <title>Forum</title>

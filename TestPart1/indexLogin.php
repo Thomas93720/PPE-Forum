@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js" />
   <script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="StyleLogin.css">
+  <link rel="stylesheet" type="text/css" href="Style/StyleLogin.css">
 </head>
 <body>
   <?php
