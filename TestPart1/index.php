@@ -86,7 +86,7 @@
 												echo "[Résolu] ";
 											}
 											echo $fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> date ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> Date Création : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
@@ -193,7 +193,7 @@
 												echo "[Résolu] ";
 											}
 											echo $fildediscussion->getTitreFilDeDiscussion().'</div>';
-											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> Date Ouverture : '.$fildediscussion->getDateCreation().'</div>';
+											echo '<div class="sousTitre">'.'Créateur : '.$createur->getNomCompte().'<br> Thème : '.$fildediscussion->getThemeFilDeDiscussion().'<br> Date Création : '.$fildediscussion->getDateCreation().'</div>';
 										echo '</div>
 									</div>
 								</div>
