@@ -69,6 +69,30 @@
             $state->bindParam(2,$idCompte);
             $state->execute();
         }
+        public static function getAllcompte()
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("SELECT * FROM Compte");
+            $state->execute();
+            $resultat = $state->fetchAll();
+            $tab = array();
+            foreach ($resultat as $ligneResultat) 
+            {
+                $user = new Compte();
+                $user->setIdCompte($ligneResultat["idCompte"]);
+                $user->setNomCompte($ligneResultat["nomCompte"]);
+                $user->setIdMessage($ligneResultat["idMessage"]);
+                $user->setDateCreation($ligneResultat["dateCreation"]);
+                $user->setLogin($ligneResultat["login"]);
+                $user->setDateDebutBan($ligneResultat["dateDebutBan"]);
+                $user->setDateFinBan($ligneResultat["dateFinBan"]);
+                $user->setMotDePasse($ligneResultat["motDePasse"]);
+                $user->setCheminPhoto($ligneResultat["cheminPhoto"]);
+                $user->setBiographie($ligneResultat["biographie"]);
+                $tab[] = $user;
+            }
+            return $tab;
+        }
         public static function isCompteBan($idCompte)
         {
             $use = new Compte();

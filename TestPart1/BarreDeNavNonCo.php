@@ -9,5 +9,6 @@
 		<input type="search" placeholder="Rechercher un topic..." name="q">
 		<button name="recherche"> Rechercher </button>
 	</form>
-	<a href="indexLogin.php"><i class="fas fa-users"> Nous rejoindre</i></a>
+	<a href="indexLogin.php"><i class="fas fa-sign-in-alt"> Nous rejoindre</i></a>
+	<a href="allUser.php"><i class="fas fa-users"></i> Tout les utilisateurs</a>
 </div>

@@ -18,6 +18,14 @@
             $state->execute();
         }
 
+        public static function reouvrirFil($idFilDeDiscussion)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("UPDATE FilDeDiscussion SET isFilDeDiscussionClos = 0 WHERE idFilDeDiscussion = ?");
+            $state->bindParam(1,$idFilDeDiscussion);
+            $state->execute();
+        }
+
         public static function gelLastIdFilDeDiscussion()
         {
             $bdd=DatabaseLinker::getConnexion();

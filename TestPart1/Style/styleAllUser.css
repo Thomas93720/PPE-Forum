@@ -7,11 +7,10 @@ body
 	font-family: 'Montserrat', sans-serif;
 	color:white;
 	background : #005378;
-	text-align: center;
 	display: flex;
 	flex-direction: column;
+	text-align: center;
 }
-
 a
 {
 	text-decoration: none;

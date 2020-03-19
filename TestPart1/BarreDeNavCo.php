@@ -16,5 +16,6 @@
 		<button name="recherche"> Rechercher </button>
 	</form>
 	<a href="AjoutFilDeDiscussion.php"><i class="fas fa-plus"></i> Ajouter un topic</a>
+	<a href="allUser.php"><i class="fas fa-users"></i> Tout les utilisateurs</a>
 	<a href="deco.php"><i class="fas fa-share-square"></i> Se deconnecter</i></a>
 </div>

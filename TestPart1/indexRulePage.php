@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Règles du forum</title>
-	<link rel="stylesheet" type="text/css" href="styleRulePage.css">
+	<link rel="stylesheet" type="text/css" href="Style/styleRulePage.css">
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js"/>
 	<link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">

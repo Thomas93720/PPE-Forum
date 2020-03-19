@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Changer d'avatar</title>
-  <link rel="stylesheet" type="text/css" href="styleIndexAvatar.css">
+  <link rel="stylesheet" type="text/css" href="Style/styleIndexAvatar.css">
 </head>
 <body>
 	<div class="mainContainer">

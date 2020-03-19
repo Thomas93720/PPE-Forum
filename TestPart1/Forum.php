@@ -18,7 +18,6 @@
 			if (!empty($_POST["bandef"])) 
 			{
 				compteManager::banCompteDef($_POST["bandef"]);
-
 			}
 			$utilisateur = new Compte();
 			$utilisateur->initCompte($_SESSION["idUser"]);
@@ -69,10 +68,18 @@
 				
 				foreach ($msg as $linemsg) 
 				{
+			        if (compteManager::isCompteBan($linemsg->getIdAuteur())) 
+			        {
+			        	messageManager::deleteMessage($linemsg->getIdMessage());
+			        	header('location: Forum.php?index='.$_GET["index"]);
+			        	exit();
+			        }
+			        else
+			        {
 			    	?>
 			    	<div class="messages"><br>
 			  			<div class="topMsg">
-					        <?php 
+					        <?php
 					        $user->initCompte($linemsg->getIdAuteur());
 			  				if ($user->getCheminPhoto()==NULL)
 			  				{
@@ -92,7 +99,7 @@
 									<form method="POST">
 										<div>
 											<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>';
-											if ($utilisateur->getIdCompte()!=$user->getIdCompte()) 
+											if ($utilisateur->getIdCompte()!=$user->getIdCompte()&&!$user->getIsCompteAdmin()) 
 											{
 												echo '<a href="bantemp.php?idCompte='.$linemsg->getIdAuteur().'"><i class="fas fa-user-times"></i> bannir temporairement</a>';
 												echo '<button name ="bandef" value = "'.$linemsg->getIdAuteur().'"><i class="fas fa-user-slash"></i> bannir def</button>';
@@ -115,6 +122,7 @@
 											</div>
 										</form>';
 								}
+							}
 					        ?>
 					    </div>
 				        <hr>

@@ -21,6 +21,10 @@
 		{
 			fildediscussionManager::cloreFil($_POST["clore"]);
 		}
+		if (!empty($_POST["reouvrir"])) 
+		{
+			fildediscussionManager::reouvrirFil($_POST["reouvrir"]);
+		}
 		?>
 		<FORM method="GET" class="formTri">
 			<SELECT name="typeTri" size="1">
@@ -73,6 +77,12 @@
 						foreach ($tabFilDeDiscussion as $fildediscussion)
 			            { 
 		            		$createur = FilDeDiscussion::getCreateurWithId($fildediscussion->getIdFilDeDiscussion());
+		            		if (compteManager::isCompteBan($fildediscussion->getIdCreateur())) 
+		            		{
+								fildediscussionManager::deleteFilDeDiscussion($fildediscussion->getIdFilDeDiscussion());		
+							}
+							else
+							{
 					        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 								echo '<div class="box">';
 									echo '<div class="Content">';
@@ -96,7 +106,22 @@
 								?>
 								<form method="POST">
 									<button name="delete" <?php echo 'value="'.$fildediscussion->getIdFilDeDiscussion().'"'?>><i class="fas fa-trash-alt"></i> Supprimer</button>
-									<button name="clore"  <?php echo 'value="'.$fildediscussion->getIdFilDeDiscussion().'"'?>><i class="far fa-window-close"></i> Clore</button>
+									<?php
+									$fdd = new FilDeDiscussion();
+									$fdd->getIdFilDeDiscussionWithId($fildediscussion->getIdFilDeDiscussion());
+									if ($fdd->getIsFilDeDiscussionClos()) 
+									{
+										?>
+										<button name="reouvrir"  <?php echo 'value="'.$fildediscussion->getIdFilDeDiscussion().'"'?>><i class="fas fa-lock-open"></i> Réouvrir</button>
+										<?php
+									}
+									else
+									{
+									?>
+									<button name="clore"  <?php echo 'value="'.$fildediscussion->getIdFilDeDiscussion().'"'?>><i class="fas fa-lock"></i> Clore</button>
+									<?php
+									}
+									?>
 								</form>
 								<?php
 							}
@@ -108,6 +133,7 @@
 								</form>
 								<?php
 							}
+						}
 		            	}
 					?>
 				
@@ -180,6 +206,12 @@
 						foreach ($tabFilDeDiscussion as $fildediscussion)
 			            { 
 		            		$createur = FilDeDiscussion::getCreateurWithId($fildediscussion->getIdFilDeDiscussion());
+		            		if (compteManager::isCompteBan($fildediscussion->getIdCreateur())) 
+		            		{
+								fildediscussionManager::deleteFilDeDiscussion($fildediscussion->getIdFilDeDiscussion());	
+							}
+							else
+							{
 					        echo '<a class="lien" href="Forum.php?index='.$fildediscussion->getIdFilDeDiscussion().'">';
 								echo '<div class="box">';
 									echo '<div class="Content">';
@@ -198,6 +230,7 @@
 									</div>
 								</div>
 							</a>';
+						}
 					}
 					 
 					$nbpages = $taille;
@@ -205,14 +238,6 @@
 					?>
 				
 			</div>
-			<div class="bas">
-			<?php  
-		  	for ($i=1; $i < $nbpages+1; $i++) 
-		  	{ 
-		  		echo '<a href="index.php?pages='.$i.'" class="nbPages">'.$i.'</a>';
-		  	}
-			?>
-		</div>
 		</div>
 	</div>
 	<?php
