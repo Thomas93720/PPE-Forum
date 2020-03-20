@@ -1,0 +1,47 @@
+body{
+	margin-top: 60px;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #005378;
+	display: flex;
+	justify-content: center;
+}
+
+.mainContainer{
+	border: solid;
+	width: 450px;
+	height: 80px;
+	padding: 30px;
+}
+
+.container{
+	text-align: center;
+}
+
+.bouton{
+	text-decoration: none;
+	margin: 40px;
+}
+
+.bouton {
+	margin: 15px;
+	background: none;
+	color: white;
+	width: 200px;
+	height: 50px;
+	border: 1px solid white;
+	font-size: 18px;
+	overflow: hidden;
+	border-radius: 4px;
+	transition: .4s;
+}
+.bouton:hover{
+	background: black;
+	color: white;
+	cursor: pointer;
+	transition: .8s;
+	height: 60px;
+	width: 280px;
+	border-radius: 30px;
+}
