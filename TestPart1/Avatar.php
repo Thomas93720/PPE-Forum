@@ -25,14 +25,20 @@ $utilisateur->initCompte($_SESSION["idUser"]);
   if(!empty($_FILES['uploaded_file']))
   {
     $path = "image/pp/";
-    $_FILES["name"] = 
-    $path = $path . basename( $_FILES['uploaded_file']['name']);
-
+    
+    if($_FILES['uploaded_file']['type'] == 'image/jpeg') {$extention = '.jpeg';}
+    if ($_FILES['uploaded_file']['type'] == 'image/jpeg') { $extention = '.jpg'; }
+    if ($_FILES['uploaded_file']['type'] == 'image/png') { $extention = '.png'; }
+    if ($_FILES['uploaded_file']['type'] == 'image/gif') { $extention = '.gif'; }
+    if ($_FILES['uploaded_file']['type'] == 'image/bmp') { $extention = '.bmp'; }
+    if ($_FILES['uploaded_file']['type'] == 'image/jpg') { $extention = '.jpg'; }
+    if ($_FILES['uploaded_file']['type'] == 'image/ico') { $extention = '.ico'; }
+    $path = $path .$utilisateur->getNomCompte().$extention;
     if(move_uploaded_file($_FILES['uploaded_file']['tmp_name'], $path)) 
     {
       echo "Le fichier ".  basename( $_FILES['uploaded_file']['name']). 
       " a bien été mis à jour !";
-      compteManager::cheminPhoto($_SESSION["idUser"],"image/pp/".$_FILES['uploaded_file']['name']);
+      compteManager::cheminPhoto($_SESSION["idUser"],$path);
       echo '<a href="index.php">Revenir au forum </a>';
     } 
     else{
