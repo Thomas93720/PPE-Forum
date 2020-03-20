@@ -17,14 +17,14 @@
     <title>Forum</title>
 </head>
 <body>
-<style>text-align:center;</style>
-<h1>Liste des utilisateurs</h1>
+<h1><i class="fas fa-users"></i> Liste des utilisateurs <i class="fas fa-users"></i></h1>
+<a href="index.php">Retourner au Forum <i class="fas fa-undo-alt"></i></a>
 <?php
 	$tabUser = compteManager::getAllcompte();
 	echo '<p>Il y a  : '.sizeof($tabUser).' utilisateurs</p>';
 ?>
-<hr style="width:80%">
-<h2>Administrateurs</h2>
+<hr>
+<h2><i class="fas fa-user-tie"></i> Administrateurs du Forum <i class="fas fa-user-tie"></i></h2>
 <?php
 foreach ($tabUser as $user) 
 {
@@ -34,7 +34,8 @@ foreach ($tabUser as $user)
 	}
 }
 ?>
-<h2>Membres</h2>
+<hr>
+<h2><i class="fas fa-user"></i> Membres du Forum <i class="fas fa-user"></i></h2>
 <?php
 foreach ($tabUser as $user) 
 {
@@ -44,7 +45,8 @@ foreach ($tabUser as $user)
 	}
 }
 ?>
-<h2>Les bannis</h2>
+<hr>
+<h2><i class="fas fa-user-times"></i> Utilisateurs bannis <i class="fas fa-user-times"></i></h2>
 <?php
 foreach ($tabUser as $user) 
 {

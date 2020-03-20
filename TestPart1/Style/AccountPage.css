@@ -10,7 +10,7 @@ body{
 .container{
   width: 400px;
   height: 530px;
-  background-color: #DADADA;
+  background-color: white;
   border-radius: 10px;
   position: absolute;
   top: 50%;
@@ -50,6 +50,9 @@ textarea{
   margin-left: 6px;
   width: 380px;
   height: 100px;
+  background-color: #eee;
+  border: none;
+  color: black;
 }
 
 input[type=submit]{
@@ -58,6 +61,7 @@ input[type=submit]{
   transform: translate(-50%);
   transition: .5s;
   background-color: white;
+  border: 1px solid #3F4043;
   border-radius: 5px;
   color: black;
   padding: 5px 52px;
@@ -69,6 +73,7 @@ input[type=submit]{
 input[type=submit]:hover{
   transition: .5s;
   background-color: black;
+  border: 1px solid #3F4043;
   border-radius: 5px;
   color: white;
   padding: 12px 30px;
@@ -80,10 +85,16 @@ input[type=submit]:hover{
 .pass{
   width: 250px;
   margin-left: 75px;
+  margin-bottom: 10px;
+  background-color: #eee;
+  border: none;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  color: black;
 }
 
 .back{
-  margin-top: 20px;
+  margin-top: 600px;
   background-color: white;
   color: black;
 }
@@ -106,7 +117,7 @@ a{
   width: 200px;
   height: 20px;
   border: 1px solid #3F4043;
-  font-size: 18px;
+  font-size: 13px;
   border-radius: 4px;
   overflow: hidden;
   transition: .4s;

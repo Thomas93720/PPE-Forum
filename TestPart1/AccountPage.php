@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="Stylesheet" type="text/css" href="Style/AccountPage.css" media="all"/>
+    <link rel="stylesheet" type="text/css" href="AccountPage.css">
     <link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://kit.fontawesome.com/92920db574.js" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -17,12 +17,9 @@
 
 		<h2>Changer de mot de passe</h2>
 		<form method="POST">
-			<p>Entrez votre ancien mot de passe : </p>
-			<input class="pass" type="password" name="mdp">
-			<p>Entrez votre nouveau mot de passe :</p>
-			<input class="pass" type="password" name="mdp">
-			<p>Confirmez votre nouveau mot de passe :</p>
-			<input class="pass" type="password" name="mdp">
+			<input placeholder="Entrez votre ancien mot de passe" class="pass" type="password" name="mdp">
+			<input placeholder="Entrez un nouveau mot de passe" class="pass" type="password" name="mdp">
+			<input placeholder="Entrez un nouveau mot de passe" class="pass" type="password" name="mdp">
 			<br>
 			<input type="submit" name="valider">
 		</form>
