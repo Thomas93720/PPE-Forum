@@ -60,6 +60,7 @@ body
 {
 	width:60px;
 	margin-left: 10px;
+	height: 60px;
 }
 .titreNomCompte
 {
@@ -86,6 +87,7 @@ button
 	color: white;
 	cursor: pointer;
 	padding: 6px;
+	margin-right: 5px;
 	border:none;
 	font-size:16px;
 	margin-top: 6px;

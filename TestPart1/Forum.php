@@ -90,7 +90,14 @@
 					        }
 					        ?>
 					        <div class="titreNomCompte"><a style="color: black; text-decoration: none;"<?php echo 'href="profil.php?idProfil='.$linemsg->getIdAuteur().'"'?><h4><?php echo ' '.$user->getNomCompte(); ?></h4></a></div><br>
-					        <?php
+					        
+					    </div>
+				        <hr>
+				        <div = class="contentMsg">
+				        	<p><?php echo $linemsg->getLibelle(); ?></p>
+				        	<div class="leftBouton">
+					        	<div class="bouton">
+					        		<?php
 						        if ($utilisateur->getIsCompteAdmin())
 						        {
 
@@ -100,14 +107,13 @@
 											<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>';
 											if ($utilisateur->getIdCompte()!=$user->getIdCompte()&&!$user->getIsCompteAdmin()) 
 											{
-												echo '<a class="button" href="bantemp.php?idCompte='.$linemsg->getIdAuteur().'"><i class="fas fa-user-times"></i> bannir temporairement</a>';
+												echo '<button><a style = "text-decoration:none; color : white;" href="bantemp.php?idCompte='.$linemsg->getIdAuteur().'"><i class="fas fa-user-times"></i> bannir temporairement</a></button>';
 												echo '<button name ="bandef" value = "'.$linemsg->getIdAuteur().'"><i class="fas fa-user-slash"></i> bannir def</button>';
 											}
 											else if($utilisateur->getIdCompte()==$user->getIdCompte()&&!$fildediscussion->getIsFilDeDiscussionClos())
 											{
-												?>
-												<a <?php echo 'href = "modifMessage.php?id='.$linemsg->getIdMessage().'"'; ?>> Modifier</a>
-												<?php
+												echo
+												'<button><a style = "text-decoration:none; color : white;"href = "modifMessage.php?id='.$linemsg->getIdMessage().'" > Modifier</a></button>';
 											}
 										echo '</div>
 									</form>';
@@ -118,20 +124,12 @@
 									echo '<form method="POST">
 											<div>
 												<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>
-												<a href = "modifMessage.php?id='.$linemsg->getIdMessage().'" > Modifier</a>
+												<button><a style = "text-decoration:none; color : white;"href = "modifMessage.php?id='.$linemsg->getIdMessage().'" > Modifier</a></button>
 											</div>
 										</form>';
 								}
 							}
 					        ?>
-					    </div>
-				        <hr>
-				        <div = class="contentMsg">
-				        	<p><?php echo $linemsg->getLibelle(); ?></p>
-				        	<div class="leftBouton">
-					        	<div class="bouton">
-				        			<button type="button"><i class="fa fa-thumbs-up"></i> Utile</button> 
-				        			<button type="button"><i class="fas fa-thumbs-down"></i> Inutile</button> 
 				        		</div>
 				        	</div>
 				        </div>
@@ -213,8 +211,7 @@
 				        	<div class="leftBouton">
 					        	<div class="bouton">
 					        		<?php //echo $linemsg->get ?>
-				        			<button type="button"><i class="fa fa-thumbs-up"></i> Utile</button> 
-				        			<button type="button"><i class="fas fa-thumbs-down"></i> Inutile</button> 
+				        			<br>
 				        		</div>
 				        	</div>
 				        </div>

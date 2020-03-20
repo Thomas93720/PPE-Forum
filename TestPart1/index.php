@@ -72,7 +72,7 @@
 					}
 					else if(sizeof($tabFilDeDiscussion)==0&&!empty($_POST["q"]))
 					{
-						echo "<h1>Aucun fil de discussion contenant : ".$_POST["q"]." n'as été trouvé </h1>";
+						echo '<h1>Aucun fil de discussion contenant : "'.$_POST["q"].'"'." n'a été trouvé !</h1>";
 					}
 						foreach ($tabFilDeDiscussion as $fildediscussion)
 			            { 
@@ -201,7 +201,7 @@
 					}
 					else if(sizeof($tabFilDeDiscussion)==0&&!empty($_POST["q"]))
 					{
-						echo "<h1>Aucun fil de discussion contenant : ".$_POST["q"]." n'as été trouvé </h1>";
+						echo '<h1>Aucun fil de discussion contenant : "'.$_POST["q"].'"'."n'a été trouvé !</h1>";
 					}
 						foreach ($tabFilDeDiscussion as $fildediscussion)
 			            { 

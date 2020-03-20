@@ -11,8 +11,12 @@ body
 	flex-direction: column;
 	text-align: center;
 }
-a
-{
+
+a{
 	text-decoration: none;
 	color: white;
+}
+
+hr{
+	width: 70%;
 }

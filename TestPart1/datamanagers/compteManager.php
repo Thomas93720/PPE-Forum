@@ -21,6 +21,23 @@
             }
             return $id;
         }
+        public static function ChangeMotDePasse($idCompte,$mdp)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("UPDATE Compte SET motDePasse = ? WHERE idCompte = ?");
+            $state->bindParam(1,$mdp);
+            $state->bindParam(2,$idCompte);
+            $state->execute();
+            
+        }
+        public static function ChangeBio($idCompte,$biographie)
+        {
+            $bdd=DatabaseLinker::getConnexion();
+            $state = $bdd->prepare("UPDATE Compte SET biographie = ? WHERE idCompte = ?");
+            $state->bindParam(1,$biographie);
+            $state->bindParam(2,$idCompte);
+            $state->execute();   
+        }
         public static function banCompteDef($idCompte)
         {
             $bdd=DatabaseLinker::getConnexion();
