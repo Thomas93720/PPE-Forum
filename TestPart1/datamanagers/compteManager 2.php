@@ -28,13 +28,6 @@
             $state->bindParam(1,$idCompte);
             $state->execute();
         }
-        public static function unban($idCompte)
-        {
-            $bdd=DatabaseLinker::getConnexion();
-            $state = $bdd->prepare("UPDATE Compte SET isCompteBanni = 0 WHERE idCompte = ?");
-            $state->bindParam(1,$idCompte);
-            $state->execute();
-        }
         public static function banCompteTemp($idCompte,$raison,$dateFin)
         {
             $bdd=DatabaseLinker::getConnexion($dateFin,$idCompte,$raison);

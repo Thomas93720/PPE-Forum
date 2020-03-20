@@ -173,7 +173,7 @@
 		        	switch($_GET["typeTri"]) 
 		        	{
 		        		case "date" :
-		        			$typeTriFilDeDiscussion = "dateOuverture ASC";
+		        			$typeTriFilDeDiscussion = "dateOuverture DESC";
 		        			break;
 		        		case "nom" :
 		        			$typeTriFilDeDiscussion = "titreFilDeDiscussion ASC";

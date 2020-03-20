@@ -84,7 +84,11 @@
 	{
 		if (!empty($_POST["banDef"])) 
 		{
-			echo "b";
+			compteManager::banCompteDef($_POST["banDef"]);
+		}
+		if (!empty($_POST["unban"]))
+		{
+			compteManager::unban($_POST["unban"]);
 		}
 		$utilisateur = new Compte();
 		$utilisateur->initCompte($_GET["idProfil"]);
@@ -140,34 +144,34 @@
 				<div class="btn2">
 					<a href="#" class="btn">Topics de l'utilisateur</a>
 				</div>
-				<form class="btn2">
+				<form method = "POST" class="btn2">
 					<?php
 					$user = new Compte();
 					$user->initCompte($_SESSION["idUser"]);
 					if (isset($_SESSION["idUser"])) 
 					{
-					if (!$utilisateur->getIsCompteAdmin()&&$user->getIsCompteAdmin()) 
-					{
-						if (!$utilisateur->getIsCompteBanni()) 
+						if (!$utilisateur->getIsCompteAdmin()&&$user->getIsCompteAdmin()) 
 						{
-							?>
-							<form method="POST">
-								<button name="banDef" class="btn"> Bannir définitivement </button>
-								
-							</form>
-							<a class="btn"<?php echo 'href="bantemp.php?idCompte="'.$_GET["idProfil"].'"'; ?>> Bannir temporairement</a>
-							<?php
-						}
-						else
-						{
-							?>
-							<form method="POST">
-								<button name="unban" class="btn"> Débannir</button>
-							</form>
-							<?php
+							if (!$utilisateur->getIsCompteBanni()) 
+							{
+								?>
+									<button <?php echo 'value="'.$_GET["idProfil"].'"'; ?> name="banDef" class="btn"> Bannir définitivement </button>
+								<?php
+								?>
+								<br>
+								<br>
+								<a class="btn" 
+								<?php echo 'href="bantemp.php?idCompte='.$_GET["idProfil"].'"'; ?>>Bannir temporairement</a>
+								<?php
+							}
+							else
+							{
+								?>
+									<button <?php echo 'value="'.$_GET["idProfil"].'"'; ?> name="unban" class="btn"> Débannir</button>
+								<?php
+							}
 						}
 					}
-				}
 					?>
 				</form>
 				<div class="btn3">

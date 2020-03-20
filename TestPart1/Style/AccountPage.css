@@ -5,6 +5,7 @@ body{
 	padding: 0;
 	background-color: #005378;
 	font-family: 'Montserrat', sans-serif;
+<<<<<<< HEAD
 }
 
 .container{
@@ -61,6 +62,15 @@ input[type=submit]{
 	border-radius: 5px;
 	color: black;
 	padding: 5px 52px;
+=======
+	color:white;
+	background : #005378;
+	display: flex;
+	flex-direction: column;
+}
+a
+{
+>>>>>>> 22cfbc4e10039dab5d0da8cb22a5902e6c0e1780
 	text-decoration: none;
 	margin: 4px 2px;
 	cursor: pointer;
@@ -104,6 +114,61 @@ a{
 a:hover{
 	background: black;
 	color: white;
+<<<<<<< HEAD
 	cursor: pointer;
 	transition: .7s;
+=======
+}
+.modal {
+  display: none;
+  position: fixed; 
+  padding-top: 50px;
+  color: black;
+  left: 0; 
+  top: 0;
+  width: 100%;
+  height: 100%; 
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal-content {
+  position: relative; 
+  background-color: white;
+  padding: 20px; 
+  margin: auto; 
+  color: black;
+  width: 75%;  
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.modal2-content {
+  position: relative; 
+  background-color: white;
+  padding: 20px; 
+  margin: auto; 
+  width: 75%;  
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.close-btn {
+  float: right; 
+  color: lightgray; 
+  font-size: 24px;  
+  font-weight: bold;
+}
+.close-btn:hover {
+  color: darkgray;
+}
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+>>>>>>> 22cfbc4e10039dab5d0da8cb22a5902e6c0e1780
 }

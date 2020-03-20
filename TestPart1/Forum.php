@@ -1,11 +1,9 @@
 <?php
-	include("HeaderForum.php");
+	include_once("HeaderForum.php");
 	include("datamanagers/compteManager.php");
 	include("datamanagers/messageManager.php");
 	include("datamanagers/DatabaseLinker.php");
 	include("datamanagers/fildediscussionManager.php");
-	
-	
 	if (!empty($_GET["index"])) 
 	{
 		session_start();  
@@ -24,7 +22,7 @@
 			$nom = $utilisateur->getNomCompte();
 			include("BarreDeNavCo.php");
 			?>
-				<?php
+			<?php
 					/*<div class="gauche">
 					<div class="profilCard">
 				        <div class="Container">
@@ -77,6 +75,7 @@
 			        else
 			        {
 			    	?>
+			    	
 			    	<div class="messages"><br>
 			  			<div class="topMsg">
 					        <?php
@@ -101,13 +100,14 @@
 											<button name = "delete" value = "'.$linemsg->getIdMessage().'"><i class="fas fa-minus"></i> Supprimer</button>';
 											if ($utilisateur->getIdCompte()!=$user->getIdCompte()&&!$user->getIsCompteAdmin()) 
 											{
-												echo '<a href="bantemp.php?idCompte='.$linemsg->getIdAuteur().'"><i class="fas fa-user-times"></i> bannir temporairement</a>';
+												echo '<a class="button" href="bantemp.php?idCompte='.$linemsg->getIdAuteur().'"><i class="fas fa-user-times"></i> bannir temporairement</a>';
 												echo '<button name ="bandef" value = "'.$linemsg->getIdAuteur().'"><i class="fas fa-user-slash"></i> bannir def</button>';
 											}
-											else
+											else if($utilisateur->getIdCompte()==$user->getIdCompte()&&!$fildediscussion->getIsFilDeDiscussionClos())
 											{
-												echo 
-												'<button name = "modif" value="'.$linemsg->getIdMessage().'"><i class="fas fa-pen"></i> Modifier</button>';
+												?>
+												<button <?php echo 'value = "'.$linemsg->getIdMessage().'"'; ?>> Modifier</button>
+												<?php
 											}
 										echo '</div>
 									</form>';

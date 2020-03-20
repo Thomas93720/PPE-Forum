@@ -1,59 +1,45 @@
-<?php
-    include("datamanagers/DatabaseLinker.php");
-    include("header.php");
-    include("data/compte.php");
-    session_start();
-    $utilisateur = new Compte();
-    $utilisateur->initCompte($_SESSION["idUser"]);
-  ?>
-  <button id="myBtn">Open Modal</button>
-
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="profilCard">
-      <div class="Container">
-        <h4 class="TitreProfil">Mon profile</h4>
-        <p class="Avatar"><img src="https://www.shareicon.net/data/2016/09/01/822739_user_512x512.png" class="imageCercle" alt="pp"></p>
-        <hr>
-        <p><i class="description"></i><i class="fas fa-address-card"></i><?php echo ' '.$utilisateur->getNomCompte(); ?></i></p>
-        <p><i class="description"><i class="far fa-calendar-alt"></i><?php echo ' '.$utilisateur->getDateCreation(); ?></i></p>
-        <p><i class="description"><i class="fas fa-comments"></i><?php echo ' '.$utilisateur->getIdMessage().' messages'; //mettre un count(methode)?></i>
-        </p> 
-      </div>
-    </div>
-  </div>
-  </div>
-  <script src="popup.js" type="text/javascript"></script>
-
-</div>
+<!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="StyleForum.css">
+<head>
+    <meta charset="utf-8" />
+    <link rel="Stylesheet" type="text/css" href="test.css" media="all"/>
+  <script src="https://kit.fontawesome.com/92920db574.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="Style/styleFooter.css">
+  
+    <title>Forum</title>
+</head>
 <body>
- 
-  <?php
-  /*
-  <div id="modalContainer">
-    <div id="profilCard">
-      <div class="Container">
-        <h4 class="TitreProfil">Mon profile</h4>
-        <p class="Avatar"><img src="https://www.shareicon.net/data/2016/09/01/822739_user_512x512.png" class="imageCercle" alt="pp"></p>
-        <hr>
-        <p><i class="description"></i><i class="fas fa-address-card"></i><?php echo ' '.$utilisateur->getNomCompte(); ?></i></p>
-        <p><i class="description"><i class="far fa-calendar-alt"></i><?php echo ' '.$utilisateur->getDateCreation(); ?></i></p>
-        <p><i class="description"><i class="fas fa-comments"></i><?php echo ' '.$utilisateur->getIdMessage().' messages'; //mettre un count(methode)?></i>
-        </p> 
-      </div>
+ <button id="modal-btn"> Modifier</button>
+  <div class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <h1>Modifier votre message</h1>
+      <form method="POST">
+        <textarea name="modif"></textarea>
+        <br>
+        <button>Modifier</button>
+      </form>
     </div>
   </div>
-  <script src="popup.js" type="text/javascript"></script>    
-</body>
-</html>*/
-?>
+</div>
 
- 
+
+<script type="text/javascript">
+  let modalBtn = document.getElementById("modal-btn")
+  let modal = document.querySelector(".modal")
+  let closeBtn = document.querySelector(".close-btn")
+
+  modalBtn.onclick = function(){
+    modal.style.display = "block"
+  }
+  closeBtn.onclick = function(){
+    modal.style.display = "none"
+  }
+  window.onclick = function(e){
+    if(e.target == modal){
+      modal.style.display = "none"
+    }
+  }
+  </script>
+</body>
+</html>
