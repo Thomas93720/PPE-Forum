@@ -17,7 +17,7 @@
     <title>Forum</title>
 </head>
 <body>
-<style>text-align:center;</style>
+<style>text-align:center</style>
 <h1>Liste des utilisateurs</h1>
 <?php
 	$tabUser = compteManager::getAllcompte();
