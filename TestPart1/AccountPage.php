@@ -6,8 +6,43 @@
     <title>Forum</title>
 </head>
 <body>
-<h1>Modifier mes informations</h1>
-<a href="Avatar.php">Changer mon image</a>
+<?php
+include("datamanagers/compteManager.php");
+include("datamanagers/messageManager.php");
+include("datamanagers/DatabaseLinker.php");
+include("datamanagers/fildediscussionManager.php");
+session_start();
+if(isset($_SESSION["idUser"]))  
+{
+	$utilisateur = new Compte();
+	$utilisateur->initCompte($_SESSION["idUser"]);
+	?>
+	<h1>Modifier mes informations</h1>
+	<a href="Avatar.php">Changer mon image</a>
+	<p>Votre mot de passe : <?php echo $utilisateur->getMotDePasse(); ?></p>
+	<button id="modal-btn"> Modifier votre mot de passe</button>
+	  <div class="modal">
+	    <div class="modal-content">
+	      <span class="close-btn">&times;</span>
+	      <h1>Votre ancien mot de passe</h1>
+	      <form method="POST">
+	        <textarea name="lastmdp"></textarea>
+	        <br>
+	      <h1>Votre nouveau mot de passe</h1>
+	        <textarea name="newmdp"></textarea>
+	        <button>Modifier</button>
+	      </form>
+	    </div>
+	  </div>
+	</div>
+	<p>Votre login : <?php echo $utilisateur->getLogin(); ?></p>
+	
+	<p>Votre adresse email : <?php echo $utilisateur->getEmail(); ?></p>
+	<p>Votre biographie : </p>
+	<p> <?php echo $utilisateur->getBiographie(); ?>
+	<?php
+}
+/*
 <h2>Changer de mot de passe</h2>
 <form method="POST">
 	<br>
@@ -41,7 +76,7 @@
 	?>
 	<input type="submit" name="valider">
 </form>
-<h2>Changer votre pseudo</h2>
+<h2>Changer votre mot de passe</h2>
 <button id="modal-btn"> Modifier votre mot de passe</button>
   <div class="modal">
     <div class="modal-content">
@@ -62,8 +97,8 @@
 <form>
 	<textarea></textarea>
 </form>
-	 
-
+	 */
+?>
 
 <script type="text/javascript">
   let modalBtn = document.getElementById("modal-btn")

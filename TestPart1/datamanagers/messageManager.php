@@ -18,6 +18,15 @@
                 $this->idFilDeDiscussion = $ligneResultat["idFilDeDiscussion"];
             }
         }
+        public static function ChangeMessage($idMessage,$libelle)
+        {
+            $connex=DatabaseLinker::getConnexion();
+            $state=$connex->prepare("UPDATE Message SET libelle = ? WHERE idMessage = ?");
+            $state->bindParam(1,$libelle);
+            $state->bindParam(2,$idMessage);
+            $state->execute();
+        }
+        
         public static function getAllMessage($typeTri)
         {
             $tab= array();

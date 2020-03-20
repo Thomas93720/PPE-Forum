@@ -163,6 +163,7 @@
                 $this->raisonBan = $ligneResultat["raisonBan"];
                 $this->cheminPhoto = $ligneResultat["cheminPhoto"];
                 $this->biographie = $ligneResultat["biographie"];
+                $this->email = $ligneResultat["email"];
             }
         }
         public static function identification($mdp,$login)
