@@ -146,28 +146,30 @@
 					$user->initCompte($_SESSION["idUser"]);
 					if (isset($_SESSION["idUser"])) 
 					{
-					if (!$utilisateur->getIsCompteAdmin()&&$user->getIsCompteAdmin()) 
-					{
-						if (!$utilisateur->getIsCompteBanni()) 
+						if (!$utilisateur->getIsCompteAdmin()&&$user->getIsCompteAdmin()) 
 						{
-							?>
-							<form method="POST">
-								<button name="banDef" class="btn"> Bannir définitivement </button>
-								
-							</form>
-							<a class="btn"<?php echo 'href="bantemp.php?idCompte="'.$_GET["idProfil"].'"'; ?>> Bannir temporairement</a>
-							<?php
-						}
-						else
-						{
-							?>
-							<form method="POST">
-								<button name="unban" class="btn"> Débannir</button>
-							</form>
-							<?php
+							if (!$utilisateur->getIsCompteBanni()) 
+							{
+								?>
+								<form method="POST">
+									<button <?php echo 'value="'.$_GET["idProfil"].'"'; ?> name="banDef" class="btn"> Bannir définitivement </button>
+								</form>
+								<?php
+								?>
+								<a class="btn" 
+								<?php echo 'href="bantemp.php?idCompte='.$_GET["idProfil"].'"'; ?>>Bannir temporairement</a>
+								<?php
+							}
+							else
+							{
+								?>
+								<form method="POST">
+									<button name="unban" class="btn"> Débannir</button>
+								</form>
+								<?php
+							}
 						}
 					}
-				}
 					?>
 				</form>
 				<div class="btn3">
