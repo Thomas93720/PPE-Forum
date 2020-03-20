@@ -13,7 +13,7 @@
 	<div class="container">
 		<h1>Modifier mes informations</h1>
 
-		<a href="Avatar.php">Changer votre avatar</a>
+		<a class="change" href="Avatar.php">Changer votre avatar</a>
 
 		<h2>Changer de mot de passe</h2>
 		<form method="POST">
@@ -36,4 +36,6 @@
 			<input type="submit" name="valider">
 		</form>
 	</div>
+	<a class="back" href="index.php">Revenir au Forum</a>
+
 

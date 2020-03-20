@@ -82,6 +82,17 @@ input[type=submit]:hover{
 	margin-left: 75px;
 }
 
+.back{
+	margin-top: 20px;
+	background-color: white;
+	color: black;
+}
+
+.back:hover{
+	background-color: black;
+	color: white;
+}
+
 a{
 	padding: 4px;
 	text-align: center;
